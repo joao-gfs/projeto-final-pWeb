@@ -1,0 +1,23 @@
+[
+    {
+        "id": 1,
+        "usuario": "João Guilherme",
+        "email": "joaoguilherme@gmail.com",
+        "senha": "123456789",
+        "assistir": [
+            {
+                "id": 1022789
+            },
+            {
+                "id": 550
+            }
+        ],
+        "assistidos": [
+            {
+                "id": 120467,
+                "resenha": "Filme bonito e bem gravado",
+                "avaliacao": 4
+            }
+        ]
+    }
+]
