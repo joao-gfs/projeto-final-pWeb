@@ -15,7 +15,7 @@ app.use(cors());
 app.use(express.json());
 
 app.listen(3000, () => {
-    console.log('Servidor ligado!')
+    console.log('Servidor ligado na porta 3000')
 });
 
 
