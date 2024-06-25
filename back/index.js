@@ -36,8 +36,24 @@ app.post('/entrar', (req, res) => {
 });
 
 // buscar filme
-app.get('/buscar/:titulo', (req, res) => {
+app.get('/buscar/:titulo', async (req, res) => {
+    const { titulo } = req.params;
 
+    try {
+        const response = await axios.get(apiUrl, {
+            params: {
+                api_key: apiKey,
+                query: titulo,
+                language: 'pt-BR'
+            }
+        });
+
+        const filmes = response.data.results;
+        res.status(200).json(filmes);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ mensagem: 'Erro ao buscar filmes' });
+    }
 });
 
 // adicionar filme nos "a assistir"
