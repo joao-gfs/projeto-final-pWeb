@@ -9,6 +9,7 @@ const bdPath = path.join(__dirname, '..', 'db', 'database-usuarios.json');
 const usuarios = JSON.parse(fs.readFileSync(bdPath, {encoding: 'utf-8'}));
 
 const apiKey = '562c60fb36e6799832d03a838a39216b'
+const apiUrl = 'https://api.themoviedb.org/3/search/movie'
 
 const app = express();
 app.use(cors());
