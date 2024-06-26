@@ -28,7 +28,30 @@ app.get('/', (req, res) => {
 
 // cadastrar usuario
 app.post('/cadastrar', (req, res) => {
+    const {id, usuario, senha, email} = req.body;
 
+    const usuarios = JSON.parse(fs.readFileSync(bdPath, {encoding : 'utf-8'}));
+
+    for(let usuario of usuarios){
+        if(usuario.email === email){
+            return res.status(400).send(`Usuário com email ${usuario.email} já existe.`);
+        }
+    }
+    
+    const newUser = {
+        id,
+        usuario,
+        senha,
+        email, 
+        assistir : [],
+        assistidos : []
+    };
+
+    usuarios.push(newUser);
+
+    fs.writeFileSync(bdPath, JSON.stringify(usuarios,null,2));
+
+    res.status(200).send('OK');
 });
 
 // login de usuario

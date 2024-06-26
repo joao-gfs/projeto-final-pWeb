@@ -5,6 +5,7 @@ import './index.css'
 
 import {createBrowserRouter, RouterProvider} from 'react-router-dom'
 import TopBar from './componentes/TopBar.jsx'
+import TelaCadastro from './componentes/Cadastro/TelaCadastro.jsx'
 
 const routes = createBrowserRouter([
   {
@@ -13,7 +14,7 @@ const routes = createBrowserRouter([
   },
   {
     path: '/cadastrar',
-    element: <TopBar/>
+    element: <TelaCadastro/>
   },
   {
     path: '/entrar',

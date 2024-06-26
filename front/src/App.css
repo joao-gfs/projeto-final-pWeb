@@ -43,16 +43,19 @@
 
 button {
   display: block;
-  margin: auto;
+  margin: 0 auto;
   margin-top: 15px;
+  border-radius: 1em;
 }
 
 input {
   width: 300px;
   padding: 0.5em;
+  border-radius: 1em;
 }
 
 body {
   background: linear-gradient(rgb(3, 3, 155), rgb(65, 65, 161), rgb(127, 127, 164));
   color: white;
 }
+
