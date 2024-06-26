@@ -11,7 +11,7 @@ const apiKey = '562c60fb36e6799832d03a838a39216b';
 const apiUrl = 'https://api.themoviedb.org/3/search/movie';
 
 // buscar filme
-app.get('/buscar/:titulo', async (req, res) => {
+router.get('/buscar/:titulo', async (req, res) => {
     const { titulo } = req.params;
 
     try {

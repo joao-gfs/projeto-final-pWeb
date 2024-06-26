@@ -19,7 +19,7 @@ const User = require(userPath);
 require('dotenv').config();
 
 // login de usuario
-app.post('/entrar', async (req, res) => {
+router.post('/entrar', async (req, res) => {
 
     const { email, senha } = req.body;
 
@@ -38,7 +38,6 @@ app.post('/entrar', async (req, res) => {
     return res.status(409).send(`Usuario com email ${email} inexistente. Considere criar uma conta!`);
 
 });
-
 
 // cadastrar usuario
 router.post('/cadastrar', async (req, res) => {
