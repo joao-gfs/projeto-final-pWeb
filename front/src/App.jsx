@@ -1,4 +1,5 @@
 import './App.css'
+import Footer from './componentes/Footer/Footer'
 import TopBar from './componentes/TopBar'
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
           <button>Pesquisar</button>
         </header>
       </section>
+      <Footer/>
     </>
   )
 }
