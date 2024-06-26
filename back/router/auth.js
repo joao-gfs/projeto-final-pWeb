@@ -27,7 +27,7 @@ app.post('/entrar', async (req, res) => {
         if(usuario.email === email){
             const senhaValidada = await bcrypt.compare(senha, usuario.senha);
             if(senhaValidada === true){
-                const tokenAcesso = jwt.sign(user, process.env.TOKEN);
+                const tokenAcesso = jwt.sign(usuario, process.env.TOKEN);
                 return res.status(200).json(tokenAcesso);
             }
             else
