@@ -1,133 +1,93 @@
-import React from 'react'
-import axios from "axios";//npm install
+import React from 'react';
+import axios, { formToJSON } from "axios";//npm install
 import { useState } from "react";
 import * as yup from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { useForm, useFormState } from 'react-hook-form';
 import { Form, Link, Navigate } from "react-router-dom";
-import './TelaCadastro.css'
+import './TelaCadastro.css';
 import TopBar from '../TopBar';
 import Footer from '../Footer/Footer';
 
+//validação
+const schema = yup.object().shape({
+    username: yup.string().required('Erro: Necessário preencher o campo usuário!'),
+    senha: yup.string().required('Erro: Necessário preencher o campo senha!')
+        .min(4, 'A senha deve ter no mínimo 4 caracteres!'),
+    confsenha: yup.string().oneOf([yup.ref('senha'), null], 'As senhas não conferem!')
+        .required('Erro: Necessário preencher o campo senha!'),
+    email: yup.string().email('Erro: Necessário preencher o campo email!')
+})
+
 export default function TelaCadastro() {
     
-    const [user, setUser] = useState({
-        id : Date.now(),
-        usuario : '',
-        senha : '',
-        confsenha : '',
-        email : ''
-    });
+    const [userCriado, setUserCriado] = useState(false);
 
-    const [status, setStatus] = useState({
-        type : '',
-        msg : '',
-    });
+    const [msg, setMsg] = useState();
 
-    //Receber dados do formulário
-    const handleChange = (e) => {
-        //constroi o novo valor
-        const newValue = {
-            id : Date.now(),
-            [e.target.name] : e.target.value
-        }
-        //atualizar
-        setUser({
-            ...user,
-            ...newValue
-        });
-    }
+    const { register, handleSubmit, formState } = useForm({resolver: yupResolver(schema)});
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
+    const {errors} = formState;
 
-        if(!(await validate())) return;//se a função retorna diferente de true ele não continua
-
-        //salvar dados do formulário
-        const saveDataForm = true;
-
+    //enviar dados do usuário
+    const submit = async (data) => {
         try {
-            //requisição para cadastrar usuário
-            const resposta = await axios.post('http://localhost:3000/cadastrar', user);
-            if(resposta.status === 200){
-                setStatus({
-            type : 'success',
-            msg : 'Usuário cadastrado com sucesso!'
-            });
-                //resetar formulário após o sucesso
-                setUser({
-                    id: Date.now(),
-                    usuario: '',
-                    senha: '',
-                    confsenha: '',
-                    email: ''
-                });
+            const response = await axios.post('http://localhost:3000/cadastrar', data);
+            setMsg(response.data);
+            if (response.data.includes('sucesso')) {
+                setUserCriado(true);
             }
         } catch (error) {
-            setStatus({
-                type : 'error',
-                msg : error.response.data || 'Erro ao cadastrar Usuário'
-            })
+            setMsg(error.response.data);
         }
     }
 
-    //validar os campos do formulário
-    async function validate(){
-        let schema = yup.object().shape({
-            usuario : yup.string('Erro: Necessário preencher o campo nome!')
-                .required('Erro: Necessário preencher o campo nome!'),
-            senha : yup.string('Erro: Necessário preencher o campo senha!')
-                .required('Erro: Necessário preencher o campo senha!')
-                .min(4, 'A senha deve ter no mínimo 4 caracteres!'),
-            confsenha : yup.string('Erro: Necessário preencher o campo de confirmação').oneOf([yup.ref('senha'), null], 'As senhas não conferem!'),
-            email : yup.string('Erro: Necessário preencher o campo email!')
-                .required('Erro: Necessário preencher o campo email!')
-                .email('Erro: Necessário preencher o campo email!')
-        });
-
-        try{
-            await schema.validate(user);
-            return true;//sucesso na validação 
-        }catch (erro) {
-            setStatus({
-                type: 'error',
-                msg : erro.errors
-            });
-            return false;//falha na validação
-        }
-    }
+    //gerar mensagens de validação
+    const gerarMensagem = () => {
+    const primeiraMsg = Object.keys(errors)[0];//pega primeira chave de erro 
+    const msgValidacao = primeiraMsg ? errors[primeiraMsg].message : null;//se existe erro pega a mensagem
+    return msgValidacao && (
+      <div className='msg-validacao'>
+        <p>{msgValidacao}</p>
+      </div>
+    );
+  };
   
     return (
     <>
     <TopBar/>
 
     <h1>Cadastro</h1>
-    <section className='formulario'>
-        <form onSubmit={handleSubmit}>
+    <section className='cadastrousuario'>
+        <form onSubmit={handleSubmit(submit)}>
             <div>
-                <label htmlFor="usuario">Usuário</label>
-                <input type="usuario" id="usuario" name="usuario" placeholder="ex: João Silva" onChange={handleChange}/>
+                <label htmlFor="username">Usuário</label>
+                <input type="text" id="username" name="username" placeholder="ex: João Silva" {...register('username')}/>
             </div>
             <div>
                 <label htmlFor="senha">Senha</label>
-                <input type="password" id="senha" name="senha" placeholder="Mínimo 4 caracteres" onChange={handleChange}/>
+                <input type="password" id="senha" name="senha" placeholder="Mínimo 4 caracteres" {...register('senha')}/>
             </div>
             <div>
                 <label htmlFor="confsenha">Confirmar senha</label>
-                <input type="password" id="confsenha" name="confsenha" placeholder="Mínimo 4 caracteres" onChange={handleChange}/>
+                <input type="password" id="confsenha" name="confsenha" placeholder="Mínimo 4 caracteres" {...register('confsenha')}/>
             </div>
             <div>
                 <label htmlFor="email">Email</label>
-                <input type="text" id="email" name="email" placeholder="ex: seuemail@exemplo.com" onChange={handleChange}/>
+                <input type="text" id="email" name="email" placeholder="ex: seuemail@exemplo.com" {...register('email')}/>
             </div>
 
-            <button>Enviar</button>
+            <button type='submit'>Enviar</button>
             
         </form>
 
-            {status.msg}
+        {gerarMensagem()}
 
-            <p>Já possui uma conta? Clique em <Link to="/entrar">Entrar</Link></p>
+        {msg}
+
+        <p>Já possui uma conta? Clique em <Link to="/entrar">Entrar</Link></p>
         
-            <Footer/>
+        <Footer/>
     </section>
     </>
   )

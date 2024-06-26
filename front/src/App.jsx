@@ -1,3 +1,4 @@
+import React from 'react';
 import './App.css'
 import Footer from './componentes/Footer/Footer'
 import TopBar from './componentes/TopBar'
