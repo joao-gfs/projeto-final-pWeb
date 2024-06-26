@@ -22,29 +22,44 @@ router.get('/', (req, res) => {
 });
 
 // adicionar filme nos "a assistir"
-router.post('/assistir/:id', (req, res) => {
+router.post('/assistir/:id', autenticarToken, (req, res) => {
 
 });
 
 // remover filme dos "a assistir"
-router.delete('/assistir/:id', (req, res) => {
+router.delete('/assistir/:id', autenticarToken, (req, res) => {
 
 });
 
 // adicionar filme nos "assistidos"
-router.post('/assistido/:id', (req, res) => {
+router.post('/assistido/:id', autenticarToken, (req, res) => {
 
 });
 
 // editar avaliacao de um filme assistido
-router.put('/assistido/:id', (req, res) => {
+router.put('/assistido/:id', autenticarToken, (req, res) => {
 
 });
 
 // remover file dos "assistidos"
-router.delete('/assistido/:id', (req, res) => {
+router.delete('/assistido/:id', autenticarToken, (req, res) => {
 
 });
+
+function autenticarToken(req, res, next){
+    const authHeader = req.headers['authorization'];
+    const token = authHeader && authHeader.split(' ')[1];
+    if(token === null)
+        return res.status(401).send('Token não encontrado');
+
+    try{
+        const usuario = jwt.verify(token, process.env.TOKEN);
+        req.user = usuario;
+        next();
+    } catch(error) {
+        res.status(403).send('Token inválido');
+    }
+}
 
 // exporta para poder ser usado nas outras partes da aplicação
 module.exports = router;
