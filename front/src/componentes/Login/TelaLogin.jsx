@@ -22,7 +22,7 @@ export default function TelaLogin() {
   //enviar dados do usuário
   const submit = async (data) => {
     try {
-      const response = await axios.post('http://localhost:3000/entrar', data);
+      const response = await axios.post('http://localhost:3000/auth/entrar', data);
       setMsg(response.data);
       if (response.data.includes('sucesso')) {
       }

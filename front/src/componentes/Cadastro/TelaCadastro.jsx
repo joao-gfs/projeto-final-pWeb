@@ -32,7 +32,7 @@ export default function TelaCadastro() {
     //enviar dados do usuário
     const submit = async (data) => {
         try {
-            const response = await axios.post('http://localhost:3000/cadastrar', data);
+            const response = await axios.post('http://localhost:3000/auth/cadastrar', data);
             setMsg(response.data);
             if (response.data.includes('sucesso')) {
                 setUserCriado(true);
