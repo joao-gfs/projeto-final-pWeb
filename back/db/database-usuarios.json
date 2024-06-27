@@ -30,5 +30,13 @@
     "senha": "$2b$10$evZdxVKAWd4yig0I6pUpiOs56L5t2VICkFTWCuGYyLkTjSc/UePLu",
     "assistir": [],
     "assistidos": []
+  },
+  {
+    "id": 5,
+    "username": "pvrodrigues10",
+    "email": "paulovitor-cr@hotmail.com",
+    "senha": "$2b$10$X9wvyjywCFeGODQruJFmBeodIRuo9eMk3rJxFUbIbLq8/fff2Vb2K",
+    "assistir": [],
+    "assistidos": []
   }
 ]
