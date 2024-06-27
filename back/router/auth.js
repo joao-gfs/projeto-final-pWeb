@@ -22,6 +22,7 @@ require('dotenv').config();
 router.post('/entrar', async (req, res) => {
 
     const { username, senha } = req.body;
+    const { username, senha } = req.body;
 
     for (let usuario of usuarios){
         if(usuario.username === username){
@@ -31,11 +32,11 @@ router.post('/entrar', async (req, res) => {
                 return res.status(200).json(tokenAcesso);
             }
             else
-                return res.status(422).send(`Usuario ou senhas incorretas.`);
+                return res.status(422).send(`Usuário ou senha incorretos.`);
         }
     }
 
-    return res.status(409).send(`Usuario ${username} inexistente. Considere criar uma conta!`);
+    return res.status(409).send(`Usuário ${username} inexistente. Considere criar uma conta!`);
 
 });
 
