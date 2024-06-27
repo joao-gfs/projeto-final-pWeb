@@ -1,23 +1,39 @@
 [
-    {
-        "id": 1,
-        "username": "João Guilherme",
-        "email": "joaoguilherme@gmail.com",
-        "senha": "123456789",
-        "assistir": [
-            {
-                "id": 1022789
-            },
-            {
-                "id": 550
-            }
-        ],
-        "assistidos": [
-            {
-                "id": 120467,
-                "resenha": "Filme bonito e bem gravado",
-                "avaliacao": 4
-            }
-        ]
-    }
+  {
+    "id": 1,
+    "username": "João Guilherme",
+    "email": "joaoguilherme@gmail.com",
+    "senha": "123456789",
+    "assistir": [
+      {
+        "id": 1022789
+      },
+      {
+        "id": 550
+      }
+    ],
+    "assistidos": [
+      {
+        "id": 120467,
+        "resenha": "Filme bonito e bem gravado",
+        "avaliacao": 4
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "usuario": "pvrodrigues10",
+    "email": "paulovitor-cr@hotmail.com",
+    "senha": "$2b$10$F5H2htQtoPqDwgYav.fw1ue3Tdt9qTo4zSXGlMB9BCgRvCYKth6Ky",
+    "assistir": [],
+    "assistidos": []
+  },
+  {
+    "id": 3,
+    "usuario": "Cr7",
+    "email": "cr7@gmail.com",
+    "senha": "$2b$10$5i16yvaYs40pHp42ouo1wOA.sZEnUY1hCzR8b3FTVEdK0Q3miiws6",
+    "assistir": [],
+    "assistidos": []
+  }
 ]
