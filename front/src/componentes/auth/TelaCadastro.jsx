@@ -5,9 +5,9 @@ import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm, useFormState } from 'react-hook-form';
 import { Form, Link, Navigate } from "react-router-dom";
-import './TelaCadastro.css';
+import '../../styles/TelaCadastro.css'
 import TopBar from '../TopBar';
-import Footer from '../Footer/Footer';
+import Footer from '../Footer';
 
 //validação
 const schema = yup.object().shape({

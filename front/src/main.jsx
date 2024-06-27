@@ -1,12 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
-import './index.css'
+import './styles/index.css'
 
 import {createBrowserRouter, RouterProvider} from 'react-router-dom'
 import TopBar from './componentes/TopBar.jsx'
-import TelaCadastro from './componentes/Cadastro/TelaCadastro.jsx'
-import TelaLogin from './componentes/Login/TelaLogin.jsx'
+import TelaCadastro from './componentes/auth/TelaCadastro.jsx'
+import TelaLogin from './componentes/auth/TelaLogin.jsx'
 
 const routes = createBrowserRouter([
   {

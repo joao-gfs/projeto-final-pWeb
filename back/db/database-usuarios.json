@@ -6,5 +6,21 @@
     "senha": "$2b$10$mt677BBdwr.r.ADyPxM8qu9bDPd0..QjIlhyXG4OaVAHWKqfyVSpK",
     "assistir": [],
     "assistidos": []
+  },
+  {
+    "id": 2,
+    "username": "jerson",
+    "email": "jgs@gm.ca",
+    "senha": "$2b$10$i37sxiixQHhWAn61/vm1yOJMLllt3mJjbhmy/RyKR9jv5X/xGrUby",
+    "assistir": [],
+    "assistidos": []
+  },
+  {
+    "id": 3,
+    "username": "jg",
+    "email": "joaogfs@bol.br",
+    "senha": "$2b$10$pxinITLKNwtWw4VPZCUaVuNGsNTUYAh8xOd6G/rIHIvVsAdVs916S",
+    "assistir": [],
+    "assistidos": []
   }
 ]
