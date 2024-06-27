@@ -21,21 +21,22 @@ require('dotenv').config();
 // login de usuario
 router.post('/entrar', async (req, res) => {
 
-    const { email, senha } = req.body;
+    const { username, senha } = req.body;
 
     for (let usuario of usuarios){
-        if(usuario.email === email){
+        console.log(usuario.username)
+        if(usuario.username === username){
             const senhaValidada = await bcrypt.compare(senha, usuario.senha);
             if(senhaValidada === true){
                 const tokenAcesso = jwt.sign(usuario, process.env.TOKEN);
                 return res.status(200).json(tokenAcesso);
             }
             else
-                return res.status(422).send(`Usuario ou senhas incorretas.`);
+                return res.status(422).send(`Usuário ou senha incorretos.`);
         }
     }
 
-    return res.status(409).send(`Usuario com email ${email} inexistente. Considere criar uma conta!`);
+    return res.status(409).send(`Usuário ${username} inexistente. Considere criar uma conta!`);
 
 });
 
