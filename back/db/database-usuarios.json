@@ -22,5 +22,13 @@
     "senha": "$2b$10$pxinITLKNwtWw4VPZCUaVuNGsNTUYAh8xOd6G/rIHIvVsAdVs916S",
     "assistir": [],
     "assistidos": []
+  },
+  {
+    "id": 4,
+    "username": "joaozin",
+    "email": "a@h.c",
+    "senha": "$2b$10$evZdxVKAWd4yig0I6pUpiOs56L5t2VICkFTWCuGYyLkTjSc/UePLu",
+    "assistir": [],
+    "assistidos": []
   }
 ]

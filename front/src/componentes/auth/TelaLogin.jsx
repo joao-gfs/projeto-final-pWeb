@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import axios from 'axios';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -23,13 +23,16 @@ export default function TelaLogin() {
   const submit = async (data) => {
     try {
       const response = await axios.post('http://localhost:3000/auth/entrar', data);
-      setMsg(response.data);
-      if (response.data.includes('sucesso')) {
-      }
+      sessionStorage.setItem('token', response.data);
+      setMsg('sucesso');
     } catch (error) {
       setMsg(error.response.data);
     }
   };
+
+  if(msg.includes('sucesso')){
+    return <Navigate to='/' />
+  }
 
   //gerar mensagens de validação
   const gerarMensagem = () => {
