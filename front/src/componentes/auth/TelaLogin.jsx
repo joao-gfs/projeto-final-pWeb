@@ -24,6 +24,7 @@ export default function TelaLogin() {
     try {
       const response = await axios.post('http://localhost:3000/auth/entrar', data);
       sessionStorage.setItem('token', response.data);
+      sessionStorage.setItem('username', data.username);
       setMsg('sucesso');
     } catch (error) {
       setMsg(error.response.data);

@@ -1,14 +1,40 @@
-import React from 'react'
-import { Form, Link, Navigate } from "react-router-dom"
-import '../styles/TopBar.css'
+import React, { useState, useEffect } from 'react';
+import { Form, Link, Navigate } from "react-router-dom";
+import '../styles/TopBar.css';
 
 export default function TopBar() {
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const storedUser = sessionStorage.getItem('username');
+    if (storedUser) {
+      setUser(storedUser);
+    }
+  }, []);
+
+  const handleLogout = () => {
+    sessionStorage.removeItem('username');
+    sessionStorage.removeItem('token');
+    setUser(null);
+    return <Navigate to='/' />
+  };
+
   return (
-    <>
-        <nav>
+    <nav>
+      <div className='deslogado'>
+        {!user && (
+          <>
             <Link to="/cadastrar" className='cadastrar'>Cadastrar</Link>
             <Link to="/entrar" className='entrar'>Entrar</Link>
-        </nav>
-    </>
-  )
+          </>
+        )}
+      </div>
+      {user && (
+        <div className='logado'>
+          <span className='username'>Olá, {user}!</span>
+          <button onClick={handleLogout} className='logout'>Sair</button>
+        </div>
+      )}
+    </nav>
+  );
 }
