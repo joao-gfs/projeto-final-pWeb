@@ -53,6 +53,10 @@ export default function TelaCadastro() {
     );
   };
   
+  if(msg === 'Usuário cadastrado com sucesso.') {
+    return <Navigate to='/entrar' />
+  }
+
     return (
     <>
     <TopBar/>
@@ -65,16 +69,16 @@ export default function TelaCadastro() {
                 <input type="text" id="username" name="username" placeholder="ex: João Silva" {...register('username')}/>
             </div>
             <div>
+                <label htmlFor="email">Email</label>
+                <input type="text" id="email" name="email" placeholder="ex: seuemail@exemplo.com" {...register('email')}/>
+            </div>
+            <div>
                 <label htmlFor="senha">Senha</label>
                 <input type="password" id="senha" name="senha" placeholder="Mínimo 4 caracteres" {...register('senha')}/>
             </div>
             <div>
                 <label htmlFor="confsenha">Confirmar senha</label>
                 <input type="password" id="confsenha" name="confsenha" placeholder="Mínimo 4 caracteres" {...register('confsenha')}/>
-            </div>
-            <div>
-                <label htmlFor="email">Email</label>
-                <input type="text" id="email" name="email" placeholder="ex: seuemail@exemplo.com" {...register('email')}/>
             </div>
 
             <button type='submit'>Enviar</button>
