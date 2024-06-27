@@ -21,10 +21,10 @@ require('dotenv').config();
 // login de usuario
 router.post('/entrar', async (req, res) => {
 
-    const { email, senha } = req.body;
+    const { username, senha } = req.body;
 
     for (let usuario of usuarios){
-        if(usuario.email === email){
+        if(usuario.username === username){
             const senhaValidada = await bcrypt.compare(senha, usuario.senha);
             if(senhaValidada === true){
                 const tokenAcesso = jwt.sign(usuario, process.env.TOKEN);
@@ -35,7 +35,7 @@ router.post('/entrar', async (req, res) => {
         }
     }
 
-    return res.status(409).send(`Usuario com email ${email} inexistente. Considere criar uma conta!`);
+    return res.status(409).send(`Usuario ${username} inexistente. Considere criar uma conta!`);
 
 });
 
@@ -47,6 +47,9 @@ router.post('/cadastrar', async (req, res) => {
     for(let usuario of usuarios){
         if(usuario.email === email){
             return res.status(409).send(`Usuário com email ${email} já existe.`);
+        }
+        if(usuario.username === username){
+            return res.status(409).send(`Este nome de usuário ja está em uso.`)
         }
     }
 
@@ -63,7 +66,7 @@ router.post('/cadastrar', async (req, res) => {
     // salvar no banco
     usuarios.push(novoUsuario);
     fs.writeFileSync(bdPath, JSON.stringify(usuarios, null, 2));
-    res.status(200).send('OK');
+    res.status(200).send('Usuário cadastrado com sucesso.');
 });
 
 module.exports = router

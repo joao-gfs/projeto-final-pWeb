@@ -8,13 +8,13 @@ app.use(cors());
 app.use(express.json());
 
 // Rotas
-const usuariosRoutes = require('./router/usuarios');
+const usuariosRoutes = require('./router/usuario');
 const filmesRoutes = require('./router/filmes');
 const authRoutes = require('./router/auth');
 
 // Roteamento
 app.use('/auth', authRoutes);
-app.use('/usuarios', usuariosRoutes);
+app.use('/usuario', usuariosRoutes);
 app.use('/filmes', filmesRoutes);
 
 app.listen(3000, () => {
