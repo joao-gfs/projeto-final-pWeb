@@ -5,8 +5,8 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import TopBar from '../TopBar';
-import Footer from '../Footer/Footer';
-import './TelaLogin.css';
+import Footer from '../Footer';
+import '../../styles/TelaLogin.css';
 
 //validação
 const schema = yup.object().shape({

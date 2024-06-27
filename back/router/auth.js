@@ -22,7 +22,6 @@ require('dotenv').config();
 router.post('/entrar', async (req, res) => {
 
     const { username, senha } = req.body;
-    const { username, senha } = req.body;
 
     for (let usuario of usuarios){
         if(usuario.username === username){
