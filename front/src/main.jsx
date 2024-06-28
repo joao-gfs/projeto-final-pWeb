@@ -4,7 +4,6 @@ import App from './App.jsx'
 import './styles/index.css'
 
 import {createBrowserRouter, RouterProvider} from 'react-router-dom'
-import TopBar from './componentes/TopBar.jsx'
 import TelaCadastro from './componentes/auth/TelaCadastro.jsx'
 import TelaLogin from './componentes/auth/TelaLogin.jsx'
 import TelaPerfil from './componentes/auth/TelaPerfil.jsx'

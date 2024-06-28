@@ -3,6 +3,7 @@ import './styles/App.css'
 import Footer from './componentes/Footer'
 import TopBar from './componentes/TopBar'
 import axios from 'axios';
+import CardFilme from './componentes/CardFilme';
 
 function App() {
   const [titulo, setTitulo] = useState('');
@@ -31,12 +32,7 @@ function App() {
           <button onClick={buscarFilme}>Pesquisar</button>
         </header>
           <div>
-            {filmes.map(filme => (
-              <div key={filme.id}>
-                <h3>{filme.title}</h3>
-                <img src={`https://image.tmdb.org/t/p/w500${filme.poster_path}`} alt={`Poster do filme ${filme.title}`} />
-              </div>
-            ))}
+            {filmes.map(filme => <CardFilme key={filme.id} {...filme}/>)}
           </div>
       </section>
       <Footer/>
