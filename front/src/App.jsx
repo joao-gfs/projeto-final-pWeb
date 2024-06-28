@@ -20,22 +20,24 @@ function App() {
 
   return (
     <>
-      <TopBar/>
-      <section>
-        <header>
-          <h1>Letter Box</h1>
-          <input
-            type="text"
-            value={titulo}
-            onChange={(e) => setTitulo(e.target.value)}
-          />
-          <button onClick={buscarFilme}>Pesquisar</button>
-        </header>
-          <div>
-            {filmes.map(filme => <CardFilme key={filme.id} {...filme}/>)}
-          </div>
-      </section>
-      <Footer/>
+      <div className='app-container'>
+        <TopBar/>
+        <section>
+          <header>
+            <h1>Letter Box</h1>
+            <input
+              type="text"
+              value={titulo}
+              onChange={(e) => setTitulo(e.target.value)}
+            />
+            <button onClick={buscarFilme}>Pesquisar</button>
+          </header>
+            <div>
+              {filmes.map(filme => <CardFilme key={filme.id} {...filme}/>)}
+            </div>
+        </section>
+        <Footer/>
+      </div>
     </>
   );
 }

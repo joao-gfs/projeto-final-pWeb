@@ -66,13 +66,15 @@ export default function TelaLogin() {
 
         </form>
 
-        {gerarMensagem()}
-        {msg}
+      {gerarMensagem()}
+      {msg}
 
-        <p>Não possui conta? Clique em <Link to="/cadastrar">Cadastrar</Link></p>
-      </section>
+      <p>Não possui conta? Clique em <Link to="/cadastrar">Cadastrar</Link></p>
+    </section>
       
-      <Footer />
+      <div className='footer-default'>
+        <Footer/>
+      </div>
     </>
   );
 }
