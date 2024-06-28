@@ -1,0 +1,31 @@
+#card-filme {
+    background-color: antiquewhite;
+    color: black;
+    height: 250px;
+    margin: 50px auto;
+    padding: 20px;
+    border-radius: 30px;
+    box-shadow: 5px 5px black;
+    display: flex;
+    text-align: left;
+    align-items: center;
+}
+
+img{
+    border-radius: 30px;
+    box-shadow: 2px 2px rgba(0, 0, 0, 0.705);
+    height: 100%;
+}
+
+#texto{
+    padding: 15px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#card-head{
+    display: flex;
+    justify-content: space-between;
+}
