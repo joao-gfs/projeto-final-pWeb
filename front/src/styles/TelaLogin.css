@@ -4,6 +4,7 @@
     height: 300px;
     border-radius: 2em;
     padding-top: 15px;
+    margin: 0 auto;
 }
 
 input {
@@ -16,5 +17,15 @@ input {
 }
 
 button {
+    display: inline-block;
+    margin-right: 10px;
     border-radius: 2em;
+}
+
+button a{
+    color: black;
+}
+
+button a:hover{
+    color: black;
 }

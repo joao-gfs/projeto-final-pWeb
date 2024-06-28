@@ -22,11 +22,8 @@ const schema = yup.object().shape({
 export default function TelaCadastro() {
     
     const [userCriado, setUserCriado] = useState(false);
-
     const [msg, setMsg] = useState();
-
     const { register, handleSubmit, formState } = useForm({resolver: yupResolver(schema)});
-
     const {errors} = formState;
 
     //enviar dados do usuário
@@ -81,7 +78,10 @@ export default function TelaCadastro() {
                 <input type="password" id="confsenha" name="confsenha" placeholder="Mínimo 4 caracteres" {...register('confsenha')}/>
             </div>
 
-            <button type='submit'>Enviar</button>
+            <div>
+                <button type='submit'>Enviar</button>
+                <button className='btnvoltar'><Link to='/'>Voltar</Link></button>
+            </div>
             
         </form>
 
@@ -90,6 +90,7 @@ export default function TelaCadastro() {
         {msg}
 
         <p>Já possui uma conta? Clique em <Link to="/entrar">Entrar</Link></p>
+
         
         <Footer/>
     </section>

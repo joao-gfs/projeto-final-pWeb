@@ -32,6 +32,7 @@ export default function TopBar() {
       {user && (
         <div className='logado'>
           <span className='username'>Olá, {user}!</span>
+          <Link to='/perfil' className='perfil'>Meu Perfil</Link>
           <button onClick={handleLogout} className='logout'>Sair</button>
         </div>
       )}

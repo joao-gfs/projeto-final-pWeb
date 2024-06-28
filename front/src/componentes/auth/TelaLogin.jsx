@@ -16,7 +16,6 @@ const schema = yup.object().shape({
 
 export default function TelaLogin() {
   const [msg, setMsg] = useState('');
-
   const { register, handleSubmit, formState: { errors } } = useForm({ resolver: yupResolver(schema) });
 
   //enviar dados do usuário
@@ -63,6 +62,8 @@ export default function TelaLogin() {
           </div>
 
           <button>Entrar</button>
+          <button><Link to='/'>Voltar</Link></button>
+
         </form>
 
         {gerarMensagem()}
@@ -70,6 +71,7 @@ export default function TelaLogin() {
 
         <p>Não possui conta? Clique em <Link to="/cadastrar">Cadastrar</Link></p>
       </section>
+      
       <Footer />
     </>
   );
