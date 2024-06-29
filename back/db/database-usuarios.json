@@ -36,8 +36,22 @@
     "username": "pvrodrigues10",
     "email": "paulovitor-cr@hotmail.com",
     "senha": "$2b$10$X9wvyjywCFeGODQruJFmBeodIRuo9eMk3rJxFUbIbLq8/fff2Vb2K",
-    "assistir": [],
-    "assistidos": []
+    "assistir": [
+      {
+        "id": "1022789"
+      },
+      {
+        "id": "150540"
+      },
+      {
+        "id": "597"
+      }
+    ],
+    "assistidos": [
+      {
+        "id": "16535"
+      }
+    ]
   },
   {
     "id": 6,

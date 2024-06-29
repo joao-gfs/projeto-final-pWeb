@@ -1,18 +1,45 @@
-import React from 'react'
-import '../styles/CardFilme.css'
+import React from 'react';
+import axios from 'axios';
+import '../styles/CardFilme.css';
 
-
-export default function CardFilme({poster_path, release_date, title, overview}) {
+export default function CardFilme({ poster_path, release_date, title, overview, id }) {
   
-  //converter a data
-  let data = ""
-  if(release_date === ""){
-    data = 'Sem registros'
+  // Converter a data
+  let data = "";
+  if (release_date === "") {
+    data = 'Sem registros';
   } else {
     let lista = release_date.split('-');
     data = `${lista[2]}/${lista[1]}/${lista[0]}`;
   }
   
+  // Função para enviar solicitação "Quero assistir"
+  const handleQueroAssistir = async () => {
+    try {
+      const response = await axios.post(`http://localhost:3000/usuario/assistir/${id}`, {}, {
+        headers: {
+          Authorization: `Bearer ${sessionStorage.getItem('token')}`
+        }
+      });
+      alert('Filme adicionado à lista "Quero assistir"');
+    } catch (error) {
+      alert('Erro ao adicionar filme à lista "Quero assistir"');
+    }
+  };
+
+  // Função para enviar solicitação "Já assisti"
+  const handleJaAssisti = async () => {
+    try {
+      const response = await axios.post(`http://localhost:3000/usuario/assistido/${id}`, {}, {
+        headers: {
+          Authorization: `Bearer ${sessionStorage.getItem('token')}`
+        }
+      });
+      alert('Filme adicionado à lista "Já assisti"');
+    } catch (error) {
+      alert('Erro ao adicionar filme à lista "Já assisti"');
+    }
+  };
 
   return (
     <div id='card-filme'>
@@ -21,8 +48,8 @@ export default function CardFilme({poster_path, release_date, title, overview}) 
             <div id='card-head'>
                 <h2>{title}</h2>
                 <div id='buttons'>
-                    <button>Quero asistir</button>
-                    <button>Já assisti</button>
+                    <button onClick={handleQueroAssistir}>Quero assistir</button>
+                    <button onClick={handleJaAssisti}>Já assisti</button>
                 </div>
             </div>
             <div>

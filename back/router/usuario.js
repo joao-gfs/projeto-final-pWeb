@@ -23,7 +23,29 @@ router.get('/', (req, res) => {
 
 // adicionar filme nos "a assistir"
 router.post('/assistir/:id', autenticarToken, (req, res) => {
+    const filmeId = req.params.id;
+    const usuarioId = req.user.id;
 
+    // Encontrar o usuário no banco de dados
+    const usuarioBD = usuarios.find(u => u.id === usuarioId);
+    if (!usuarioBD) {
+        return res.status(404).json({ message: 'Usuário não encontrado' });
+    }
+
+
+    // Verificar se o filme já está na lista de "assistir"
+    const filmeExistente = usuarioBD.assistir.find(filme => filme.id === filmeId);
+    if (filmeExistente) {
+        return res.status(400).json({ message: 'Filme já está na lista de "a assistir"' });
+    }
+
+    // Adicionar o filme à lista de "a assistir"
+    usuarioBD.assistir.push({ id: filmeId });
+
+    // Salvar os usuários de volta no banco de dados
+    fs.writeFileSync(bdPath, JSON.stringify(usuarios, null, 2));
+
+    res.status(200).json({ message: 'Filme adicionado à lista de "a assistir"' });
 });
 
 // remover filme dos "a assistir"
@@ -33,7 +55,28 @@ router.delete('/assistir/:id', autenticarToken, (req, res) => {
 
 // adicionar filme nos "assistidos"
 router.post('/assistido/:id', autenticarToken, (req, res) => {
+    const filmeId = req.params.id;
+    const usuarioId = req.user.id;
 
+    // Encontrar o usuário no banco de dados
+    const usuarioBD = usuarios.find(u => u.id === usuarioId);
+    if (!usuarioBD) {
+        return res.status(404).json({ message: 'Usuário não encontrado' });
+    }
+
+    // Verificar se o filme já está na lista de "assistidos"
+    const filmeExistente = usuarioBD.assistidos.find(filme => filme.id === filmeId);
+    if (filmeExistente) {
+        return res.status(400).json({ message: 'Filme já está na lista de "a assistir"' });
+    }
+
+    // Adicionar o filme à lista de "a assistir"
+    usuarioBD.assistidos.push({ id: filmeId });
+
+    // Salvar os usuários de volta no banco de dados
+    fs.writeFileSync(bdPath, JSON.stringify(usuarios, null, 2));
+
+    res.status(200).json({ message: 'Filme adicionado à lista de "a assistir"' });
 });
 
 // editar avaliacao de um filme assistido
