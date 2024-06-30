@@ -44,7 +44,7 @@ export default function CardFilme({ poster_path, release_date, title, overview, 
   return (
     <div id='card-filme'>
         <img src={`https://image.tmdb.org/t/p/w500${poster_path}`} alt={`Poster do filme ${title}`} />
-        <div id='texto'>
+        <div id='card-body'>
             <div id='card-head'>
                 <h2>{title}</h2>
                 <div id='buttons'>
@@ -52,7 +52,7 @@ export default function CardFilme({ poster_path, release_date, title, overview, 
                     <button onClick={handleJaAssisti}>Já assisti</button>
                 </div>
             </div>
-            <div>
+            <div id='card-text'>
                 <p>Data de lançamento: {data}</p>
                 <p id='descricao-filme'>{overview}</p>
             </div>
