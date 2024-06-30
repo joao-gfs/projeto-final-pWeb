@@ -15,11 +15,30 @@ const usuarios = JSON.parse(fs.readFileSync(bdPath, {encoding: 'utf-8'}));
 const apiKey = '562c60fb36e6799832d03a838a39216b';
 const apiUrl = 'https://api.themoviedb.org/3/search/movie';
 
+function getUsuario(id){
+    const usuarioBD = usuarios.find(u => u.id === id);
+    if (!usuarioBD) {
+        return res.status(404).json({ message: 'Usuário não encontrado' });
+    }
+
+    return usuarioBD
+}
+
+
 router.get('/', (req, res) => {
     
     res.status(200).json(usuarios)
 
 });
+
+// devolve a lista completa de filmes a assistir
+router.get('/assistir', autenticarToken, (req, res) => {
+    const usuarioId = req.user.id;
+    const usuarioBD = getUsuario(usuarioId);
+
+    res.status(200).json(usuarioBD.assistir);
+});
+
 
 // adicionar filme nos "a assistir"
 router.post('/assistir/:id', autenticarToken, (req, res) => {
@@ -27,10 +46,7 @@ router.post('/assistir/:id', autenticarToken, (req, res) => {
     const usuarioId = req.user.id;
 
     // Encontrar o usuário no banco de dados
-    const usuarioBD = usuarios.find(u => u.id === usuarioId);
-    if (!usuarioBD) {
-        return res.status(404).json({ message: 'Usuário não encontrado' });
-    }
+    const usuarioBD = getUsuario(usuarioId);
 
     // Verificar se o filme já está na lista de "assistir"
     const filmeExistente = usuarioBD.assistir.find(filme => filme.id === filmeId);
@@ -52,10 +68,7 @@ router.delete('/assistir/:id', autenticarToken, (req, res) => {
     const filmeID = req.params.id;
     const usuarioID = req.user.id;
 
-    const usuarioBD = usuarios.find(u => u.id === usuarioID);
-    if(!usuarioBD) {
-        return res.status(404).json({ message: 'Usuário não encontrado' });
-    }
+    const usuarioBD = getUsuario(usuarioID)
 
     const acharIndex = (f) => {
         return f.id == filmeID
@@ -70,16 +83,21 @@ router.delete('/assistir/:id', autenticarToken, (req, res) => {
     res.status(200).json({ message: 'Filme removido com sucesso' });
 });
 
+// devolve a lista completa de filmes assistidos
+router.get('/assistidos', autenticarToken, (req, res) => {
+    const usuarioId = req.user.id;
+    const usuarioBD = getUsuario(usuarioId);
+
+    res.status(200).json(usuarioBD.assistidos);
+})
+
 // adicionar filme nos "assistidos"
 router.post('/assistido/:id', autenticarToken, (req, res) => {
     const filmeId = req.params.id;
     const usuarioId = req.user.id;
 
     // Encontrar o usuário no banco de dados
-    const usuarioBD = usuarios.find(u => u.id === usuarioId);
-    if (!usuarioBD) {
-        return res.status(404).json({ message: 'Usuário não encontrado' });
-    }
+    const usuarioBD = getUsuario(usuarioId);
 
     // Verificar se o filme já está na lista de "assistidos"
     const filmeExistente = usuarioBD.assistidos.find(filme => filme.id === filmeId);
@@ -106,10 +124,7 @@ router.delete('/assistido/:id', autenticarToken, (req, res) => {
     const filmeID = req.params.id;
     const usuarioID = req.user.id;
 
-    const usuarioBD = usuarios.find(u => u.id === usuarioID);
-    if(!usuarioBD) {
-        return res.status(404).json({ message: 'Usuário não encontrado' });
-    }
+    const usuarioBD = getUsuario(usuarioId);
 
     const acharIndex = (f) => {
         return f.id == filmeID
