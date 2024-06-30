@@ -32,7 +32,6 @@ router.post('/assistir/:id', autenticarToken, (req, res) => {
         return res.status(404).json({ message: 'Usuário não encontrado' });
     }
 
-
     // Verificar se o filme já está na lista de "assistir"
     const filmeExistente = usuarioBD.assistir.find(filme => filme.id === filmeId);
     if (filmeExistente) {
@@ -50,7 +49,25 @@ router.post('/assistir/:id', autenticarToken, (req, res) => {
 
 // remover filme dos "a assistir"
 router.delete('/assistir/:id', autenticarToken, (req, res) => {
+    const filmeID = req.params.id;
+    const usuarioID = req.user.id;
 
+    const usuarioBD = usuarios.find(u => u.id === usuarioID);
+    if(!usuarioBD) {
+        return res.status(404).json({ message: 'Usuário não encontrado' });
+    }
+
+    const acharIndex = (f) => {
+        return f.id == filmeID
+    }
+
+    const index = usuarioBD.assistir.findIndex(acharIndex);
+
+    usuarioBD.assistir.splice(index, 1);        
+
+    fs.writeFileSync(bdPath, JSON.stringify(usuarios, null, 2));
+
+    res.status(200).json({ message: 'Filme removido com sucesso' });
 });
 
 // adicionar filme nos "assistidos"
@@ -86,7 +103,25 @@ router.put('/assistido/:id', autenticarToken, (req, res) => {
 
 // remover file dos "assistidos"
 router.delete('/assistido/:id', autenticarToken, (req, res) => {
+    const filmeID = req.params.id;
+    const usuarioID = req.user.id;
 
+    const usuarioBD = usuarios.find(u => u.id === usuarioID);
+    if(!usuarioBD) {
+        return res.status(404).json({ message: 'Usuário não encontrado' });
+    }
+
+    const acharIndex = (f) => {
+        return f.id == filmeID
+    }
+
+    const index = usuarioBD.assistidos.findIndex(acharIndex);
+
+    usuarioBD.assistidos.splice(index, 1);        
+
+    fs.writeFileSync(bdPath, JSON.stringify(usuarios, null, 2));
+
+    res.status(200).json({ message: 'Filme removido com sucesso' });
 });
 
 function autenticarToken(req, res, next){
