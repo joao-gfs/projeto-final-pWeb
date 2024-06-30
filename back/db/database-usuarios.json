@@ -4,28 +4,8 @@
     "username": "joao_g_fs",
     "email": "juau@gmail.com",
     "senha": "$2b$10$mt677BBdwr.r.ADyPxM8qu9bDPd0..QjIlhyXG4OaVAHWKqfyVSpK",
-    "assistir": [
-      {
-        "id": "1022789"
-      },
-      {
-        "id": "293660"
-      },
-      {
-        "id": "10518"
-      },
-      {
-        "id": "18696"
-      }
-    ],
-    "assistidos": [
-      {
-        "id": "293660"
-      },
-      {
-        "id": "10518"
-      }
-    ]
+    "assistir": [],
+    "assistidos": []
   },
   {
     "id": 2,
