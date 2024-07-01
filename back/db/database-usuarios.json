@@ -52,7 +52,22 @@
     "username": "hiarafg",
     "email": "hiara@gmail.com",
     "senha": "$2b$10$/qW1VbZXXb3wIIapYyqy9eJ64YrGQuhpM5SkdPqXr5xeMcJEcfFWS",
-    "assistir": [],
+    "assistir": [
+      {
+        "id": 1022789,
+        "poster_path": "/9h2KgGXSmWigNTn3kQdEFFngj9i.jpg",
+        "release_date": "2024-06-11",
+        "title": "Divertida Mente 2",
+        "overview": "\"Divertida Mente 2\", da Disney e da Pixar, retorna à mente da adolescente Riley, e o faz no momento em que a sala de comando está passando por uma demolição repentina para dar lugar a algo totalmente inesperado: novas emoções! Alegria, Tristeza, Raiva, Medo e Nojinho não sabem bem como reagir quando Ansiedade aparece, e tudo indica que ela não está sozinha."
+      },
+      {
+        "id": 37165,
+        "poster_path": "/5lnCIDrH6yujeuJ16CGPoFktKd6.jpg",
+        "release_date": "1998-06-04",
+        "title": "O Show de Truman: O Show da Vida",
+        "overview": "Truman Burbank é um pacato vendedor de seguros que leva um vida simples com sua esposa Meryl Burbank. Porém algumas coisas ao seu redor fazem com que ele passe a estranhar sua cidade, seus supostos amigos e até sua mulher. Após conhecer a misteriosa Lauren, ele fica intrigado e acaba descobrindo que toda sua vida foi monitorada por câmeras e transmitida em rede nacional."
+      }
+    ],
     "assistidos": []
   }
 ]
