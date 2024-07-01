@@ -45,6 +45,8 @@ router.post('/assistir/:id', autenticarToken, (req, res) => {
     const filmeId = req.params.id;
     const usuarioId = req.user.id;
 
+    console.log(`${filmeId} ${usuarioId}`);
+
     // Encontrar o usuário no banco de dados
     const usuarioBD = getUsuario(usuarioId);
 
