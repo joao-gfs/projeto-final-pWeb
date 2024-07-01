@@ -1,9 +1,12 @@
 import React from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom'
 import '../styles/CardFilme.css';
 
 export default function CardFilme({ poster_path, release_date, title, overview, id }) {
-  
+
+  const navigate = useNavigate();
+
   // Converter a data
   let data = "";
   if (release_date === "") {
@@ -16,7 +19,14 @@ export default function CardFilme({ poster_path, release_date, title, overview, 
   // Função para enviar solicitação "Quero assistir"
   const handleQueroAssistir = async () => {
     try {
-      const response = await axios.post(`http://localhost:3000/usuario/assistir/${id}`, {}, {
+      const response = await axios.post(`http://localhost:3000/usuario/assistir`, {
+        id,
+        poster_path,
+        release_date,
+        title,
+        overview
+      }, 
+      {
         headers: {
           Authorization: `Bearer ${sessionStorage.getItem('token')}`
         }
@@ -29,16 +39,7 @@ export default function CardFilme({ poster_path, release_date, title, overview, 
 
   // Função para enviar solicitação "Já assisti"
   const handleJaAssisti = async () => {
-    try {
-      const response = await axios.post(`http://localhost:3000/usuario/assistido/${id}`, {}, {
-        headers: {
-          Authorization: `Bearer ${sessionStorage.getItem('token')}`
-        }
-      });
-      alert('Filme adicionado à lista "Já assisti"');
-    } catch (error) {
-      alert('Erro ao adicionar filme à lista "Já assisti"');
-    }
+    navigate('/avaliar');
   };
 
   return (
