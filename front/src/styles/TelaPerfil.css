@@ -14,3 +14,11 @@ h1 {
     text-align: center;
     margin-top: 20px;
 }
+
+.filmes a{
+    color: white;
+}
+
+.filmes a:hover{
+    color: white;
+}
