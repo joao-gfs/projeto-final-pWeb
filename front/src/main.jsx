@@ -24,6 +24,10 @@ const routes = createBrowserRouter([
   {
     path: '/perfil',
     element: <TelaPerfil/>
+  },
+  {
+    path: '/avaliar',
+    element: <TelaPerfil />
   }
 ]);
 
