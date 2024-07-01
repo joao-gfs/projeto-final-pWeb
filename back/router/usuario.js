@@ -41,23 +41,21 @@ router.get('/assistir', autenticarToken, (req, res) => {
 
 
 // adicionar filme nos "a assistir"
-router.post('/assistir/:id', autenticarToken, (req, res) => {
-    const filmeId = req.params.id;
+router.post('/assistir', autenticarToken, (req, res) => {
+    const { id, poster_path, release_date, title, overview } = req.body;
     const usuarioId = req.user.id;
-
-    console.log(`${filmeId} ${usuarioId}`);
 
     // Encontrar o usuário no banco de dados
     const usuarioBD = getUsuario(usuarioId);
 
     // Verificar se o filme já está na lista de "assistir"
-    const filmeExistente = usuarioBD.assistir.find(filme => filme.id === filmeId);
+    const filmeExistente = usuarioBD.assistir.find(filme => filme.id === id);
     if (filmeExistente) {
         return res.status(400).json({ message: 'Filme já está na lista de "a assistir"' });
     }
 
     // Adicionar o filme à lista de "a assistir"
-    usuarioBD.assistir.push({ id: filmeId });
+    usuarioBD.assistir.push({ id, poster_path, release_date, title, overview });
 
     // Salvar os usuários de volta no banco de dados
     fs.writeFileSync(bdPath, JSON.stringify(usuarios, null, 2));
