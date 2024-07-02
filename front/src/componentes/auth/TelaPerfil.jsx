@@ -31,7 +31,9 @@ export default function TelaPerfil() {
 
         </section>
 
-        <Footer/>
+        <div className='footer-default'>
+          <Footer/>
+        </div>
     </>
   )
 }

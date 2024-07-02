@@ -38,14 +38,31 @@
     "senha": "$2b$10$X9wvyjywCFeGODQruJFmBeodIRuo9eMk3rJxFUbIbLq8/fff2Vb2K",
     "assistir": [
       {
+        "id": 597,
+        "poster_path": "/9xjZS2rlVxm8SFx8kPC3aIGCOYQ.jpg",
+        "release_date": "1997-11-18",
+        "title": "Titanic",
+        "overview": "Um artista pobre e uma jovem rica se conhecem e se apaixonam na fatídica jornada do Titanic, em 1912. Embora esteja noiva do arrogante herdeiro de uma siderúrgica, a jovem desafia sua família e amigos em busca do verdadeiro amor."
+      },
+      {
+        "id": 2062,
+        "poster_path": "/lpyqGZXjaPpr2dzkD9XD5DUGMkN.jpg",
+        "release_date": "2007-06-21",
+        "title": "Ratatouille",
+        "overview": "Um rato que sabe cozinhar faz uma aliança incomum com um jovem trabalhador de cozinha em um restaurante famoso."
+      }
+    ],
+    "assistidos": [
+      {
         "id": 1022789,
         "poster_path": "/9h2KgGXSmWigNTn3kQdEFFngj9i.jpg",
         "release_date": "2024-06-11",
         "title": "Divertida Mente 2",
-        "overview": "\"Divertida Mente 2\", da Disney e da Pixar, retorna à mente da adolescente Riley, e o faz no momento em que a sala de comando está passando por uma demolição repentina para dar lugar a algo totalmente inesperado: novas emoções! Alegria, Tristeza, Raiva, Medo e Nojinho não sabem bem como reagir quando Ansiedade aparece, e tudo indica que ela não está sozinha."
+        "overview": "\"Divertida Mente 2\", da Disney e da Pixar, retorna à mente da adolescente Riley, e o faz no momento em que a sala de comando está passando por uma demolição repentina para dar lugar a algo totalmente inesperado: novas emoções! Alegria, Tristeza, Raiva, Medo e Nojinho não sabem bem como reagir quando Ansiedade aparece, e tudo indica que ela não está sozinha.",
+        "nota": "5",
+        "resenha": "a"
       }
-    ],
-    "assistidos": []
+    ]
   },
   {
     "id": 6,
