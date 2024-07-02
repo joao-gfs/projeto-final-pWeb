@@ -92,21 +92,27 @@ router.get('/assistidos', autenticarToken, (req, res) => {
 })
 
 // adicionar filme nos "assistidos"
-router.post('/assistido/:id', autenticarToken, (req, res) => {
-    const filmeId = req.params.id;
+router.post('/assistidos', autenticarToken, (req, res) => {
+    const { id, poster_path, release_date, title, overview, nota, resenha } = req.body;
     const usuarioId = req.user.id;
 
     // Encontrar o usuário no banco de dados
     const usuarioBD = getUsuario(usuarioId);
 
     // Verificar se o filme já está na lista de "assistidos"
-    const filmeExistente = usuarioBD.assistidos.find(filme => filme.id === filmeId);
+    const filmeExistente = usuarioBD.assistidos.find(filme => filme.id === id);
     if (filmeExistente) {
         return res.status(400).json({ message: 'Filme já está na lista de "a assistir"' });
     }
 
+    // Verificar se o filme está na lista de "assistir" e remover se estiver
+    const indexFilmeAassistir = usuarioBD.assistir.findIndex(filme => filme.id === id);
+    if (indexFilmeAassistir !== -1) {
+        usuarioBD.assistir.splice(indexFilmeAassistir, 1);
+    }
+    
     // Adicionar o filme à lista de "a assistir"
-    usuarioBD.assistidos.push({ id: filmeId });
+    usuarioBD.assistidos.push({ id, poster_path, release_date, title, overview, nota, resenha });
 
     // Salvar os usuários de volta no banco de dados
     fs.writeFileSync(bdPath, JSON.stringify(usuarios, null, 2));

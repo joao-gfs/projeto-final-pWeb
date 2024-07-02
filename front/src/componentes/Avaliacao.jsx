@@ -54,7 +54,7 @@ export default function Avaliacao() {
       e.preventDefault();
 
       try{
-        const resposta = await axios.post('http://localhost:3000/usuarios/assistidos', avaliacao, config);
+        const resposta = await axios.post('http://localhost:3000/usuario/assistidos', avaliacao, config);
         if(resposta.status === 200){
           setMsg('OK');
         }
@@ -80,7 +80,7 @@ export default function Avaliacao() {
             <div id='av-body'>
               <img id='poster' src={`https://image.tmdb.org/t/p/w500${poster_path}`} alt={`Poster de ${title}`} />
               <div id='texto-avaliar'>
-                <p>{overview}</p>
+                <p id='p-avaliacao'>{overview}</p>
                 <div id='rating'>
                 {['1', '2', '3', '4', '5'].map((nota) => (
                   <button 
