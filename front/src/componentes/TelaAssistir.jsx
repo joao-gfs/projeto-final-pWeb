@@ -35,7 +35,7 @@ export default function TelaAssistir() {
     <section>
         <ul>
             {watch.map(filme => <li>
-                <CardFilme key={filme.id} {...filme}/>
+                <CardFilme key={filme.id} {...filme} botoes={['assistido', 'remover']}/>
             </li>)}
         </ul>
     </section>

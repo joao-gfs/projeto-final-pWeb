@@ -31,3 +31,16 @@ img{
     justify-content: space-between;
     padding-top: 30px;
 }
+
+#btn-remover {
+    background-color: rgb(228, 35, 9);
+}
+
+#btn-assistir{
+    background-color:  rgb(65, 65, 161);
+}
+
+#btn-assistido{
+    background-color: rgb(255, 187, 0);
+    color: black;
+}

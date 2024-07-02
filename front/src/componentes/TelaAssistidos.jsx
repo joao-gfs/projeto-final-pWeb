@@ -35,7 +35,7 @@ export default function TelaAssistidos() {
     <section>
         <ul>
             {watched.map(filme => <li>
-                <CardFilme key={filme.id} {...filme}/>
+                <CardFilme key={filme.id} {...filme} botoes={['editar', 'remover']}/>
             </li>)}
         </ul>
     </section>
