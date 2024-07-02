@@ -7,6 +7,7 @@ import {createBrowserRouter, RouterProvider} from 'react-router-dom'
 import TelaCadastro from './componentes/auth/TelaCadastro.jsx'
 import TelaLogin from './componentes/auth/TelaLogin.jsx'
 import TelaPerfil from './componentes/auth/TelaPerfil.jsx'
+import Avaliacao from './componentes/Avaliacao.jsx'
 
 const routes = createBrowserRouter([
   {
@@ -27,7 +28,7 @@ const routes = createBrowserRouter([
   },
   {
     path: '/avaliar',
-    element: <TelaPerfil />
+    element: <Avaliacao />
   }
 ]);
 

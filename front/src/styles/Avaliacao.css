@@ -1,0 +1,77 @@
+#root {
+    width: 100%;
+}
+
+#av-head{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+h2 {
+    font-size: 2.5em;
+    margin: 5px;
+}
+
+#poster {
+    border-radius: 30px;
+    box-shadow: 2px 2px rgba(0, 0, 0, 0.705);
+    margin: 15px;
+    height: 500px;
+}
+
+p {
+    font-size: 1.2em;
+    text-align: justify;
+}
+
+#rating p {
+    margin: 0;
+}
+
+#av-body {
+    display: flex;
+}
+
+#avaliacao {
+    background-color: antiquewhite;
+    color: black;
+    margin: 0 auto;
+    max-width: 1200px;
+    height: 100%;
+    text-align: left;
+    margin: 50px auto;
+    padding: 20px;
+    border-radius: 30px;
+    box-shadow: 5px 5px black;
+}
+
+#rating {
+    margin-bottom: 20px;
+}
+
+#resenha{
+    height: 100%;
+}
+
+#texto-resenha{
+    background-color: antiquewhite;
+    color: black;
+    text-align: justify;
+    font-weight: 100;
+    width: 100%;
+    max-width: 90%;
+    height: 15em;
+    margin: 0;
+    border-radius: 15px;
+    padding: 10px;
+}
+
+#footer-avaliacao p {
+    text-align: center;
+}
+
+#rating button.ativo {
+    background-color: rgb(255, 187, 0);
+    color: black;
+}

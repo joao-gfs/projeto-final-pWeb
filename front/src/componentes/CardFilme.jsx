@@ -39,7 +39,7 @@ export default function CardFilme({ poster_path, release_date, title, overview, 
 
   // Função para enviar solicitação "Já assisti"
   const handleJaAssisti = async () => {
-    navigate('/avaliar');
+    navigate('/avaliar', {state: { poster_path, release_date, title, overview, id }});
   };
 
   return (
