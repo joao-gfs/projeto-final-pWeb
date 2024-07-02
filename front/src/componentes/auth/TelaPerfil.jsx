@@ -8,73 +8,25 @@ import CardFilme from '../CardFilme';
 
 export default function TelaPerfil() {
   
-    const [user, setUser] = useState({});
-    const [watched, setWatched] = useState([]);
-    const [watchList, setWatchList] = useState([]);
+    const [user, setUser] = useState(null);
 
     useEffect(() => {
-        const fetchUserProfile = async () => {
-            try {
-                const token = sessionStorage.getItem('token');
-                const storedUser = sessionStorage.getItem('username');
-                console.log('user: ', storedUser)
-                
-                //requisição filmes assistidos
-                const responseAssistidos = await axios.get('http://localhost:3000/usuario/assistido', {
-                    headers: {Authorization: `Bearer ${token}`}
-                });
-                setWatched(responseAssistidos.data);
-
-                //requisição filmes a assistir
-                const responseAssistir = await axios.get('http://localhost:3000/usuario/assistir', {
-                    headers: {Authorization: `Bearer ${token}`}
-                });
-                setWatchList(responseAssistir.data);
-
-                if (storedUser) {
-                    setUser(storedUser);
-                }
-                
-            } catch (error) {
-                console.error('Erro ao carregar perfil do usuário!', error);
-            }
-        };
-
-        fetchUserProfile();
-    }, []);
+        const storedUser = sessionStorage.getItem('username');
+        if (storedUser) {
+          setUser(storedUser);
+        }
+      }, []);
 
     return (
     <>
         <TopBar/>
-        <h1>Meus Filmes</h1>
+        <h1>Ver lista de Filmes</h1>
         <section className='filmes'>
             <div className='assistidos'>
-                <h2>Filmes assistidos</h2>
-                <ul>
-                    {watched.map(filme => (
-                        <li key={filme.id}>
-                            <CardFilme poster_path={filme.poster_path} 
-                                release_date={filme.release_date} 
-                                title={filme.title} 
-                                overview={filme.overview} 
-                                id={filme.id}/>
-                        </li>
-                    ))}
-                </ul>
+                <h2><Link to='/filmes-assistidos'>Meus Filmes assistidos</Link></h2>
             </div>
             <div className='assistir'>
-            <h2>Filmes a assistir</h2>
-                <ul>
-                {watchList.map(filme => (
-                        <li key={filme.id}>
-                            <CardFilme poster_path={filme.poster_path} 
-                                release_date={filme.release_date} 
-                                title={filme.title} 
-                                overview={filme.overview} 
-                                id={filme.id}/>
-                        </li>
-                    ))}
-                </ul>
+            <h2><Link to='/filmes-assistir'>Meus Filmes para assistir</Link></h2>
             </div>
 
         </section>
