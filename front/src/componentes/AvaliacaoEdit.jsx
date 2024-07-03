@@ -7,7 +7,7 @@ import { Navigate, useLocation } from 'react-router-dom'
 
 export default function Avaliacao() {
 
-    const {poster_path, release_date, title, overview, id} = useLocation().state;
+    const {poster_path, release_date, title, overview, id, resenha, nota} = useLocation().state;
 
     const anoLancamento = release_date.split('-')[0]
 
@@ -19,8 +19,8 @@ export default function Avaliacao() {
       release_date,
       title,
       overview,
-      nota: 0,
-      resenha: ""
+      nota,
+      resenha: resenha
     })
 
     const handleNota = (n) => {
@@ -36,8 +36,6 @@ export default function Avaliacao() {
       const novoValor = {
         resenha: e.target.value
       }
-
-      console.log(novoValor)
       setAvaliacao({
         ...avaliacao,
         ...novoValor
@@ -67,6 +65,17 @@ export default function Avaliacao() {
       return <Navigate to='/perfil' />
     }
 
+    let divNota = null
+  if(nota != 0){
+    if(nota >= 4){
+      divNota = <div className='notas' id='notaAlta'>{nota}</div>
+    } else if(nota >= 3) {
+      divNota = <div className='notas' id='notaMedia'>{nota}</div>
+    } else {
+      divNota = <div className='notas' id='notaBaixa'>{nota}</div>
+    }
+  }
+
   return (
     <>
         <TopBar />
@@ -75,6 +84,7 @@ export default function Avaliacao() {
         <div id='avaliacao'>
             <div id='av-head'>
               <h2>{title} - {anoLancamento}</h2>
+              {divNota}
               <button onClick={handleSubmit}>Enviar</button>
             </div>
             <div id='av-body'>
@@ -82,19 +92,19 @@ export default function Avaliacao() {
               <div id='texto-avaliar'>
                 <p id='p-avaliacao'>{overview}</p>
                 <div id='rating'>
-                {['1', '2', '3', '4', '5'].map((nota) => (
+                {['1', '2', '3', '4', '5'].map((valorNota) => (
                   <button 
-                    key={nota} 
+                    key={valorNota} 
                     onClick={handleNota} 
-                    className={botaoAtivo == nota ? 'ativo' : ''}
+                    className={botaoAtivo == valorNota ? 'ativo' : ''}
                   >
-                    {nota}
+                    {valorNota}
                   </button>
                 ))}
                 </div>
                 <div id='resenha'>
                   <label htmlFor="input-resenha">Comentário:</label>
-                  <textarea id='texto-resenha' onChange={handleChange}/>
+                  <textarea id='texto-resenha' onChange={handleChange} value={avaliacao.resenha}/>
                 </div>
               </div>
             </div>
