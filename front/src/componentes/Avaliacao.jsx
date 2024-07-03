@@ -7,6 +7,21 @@ import { Navigate, useLocation } from 'react-router-dom'
 
 export default function Avaliacao() {
 
+  const [authorized, setAuthorized] = useState(false);
+
+    useEffect(() => {
+      const tokenAuth = sessionStorage.getItem('token');
+      if(tokenAuth != null){
+        setAuthorized(true)
+      }
+    })
+
+    if(!authorized){
+      return(
+        <p id='pForbidden'>Você precisar entrar para acessar esta página. <Link id='redirect-entrar' to='/entrar'>Entrar</Link></p>
+      )
+    }
+
     const {poster_path, release_date, title, overview, id} = useLocation().state;
 
     const anoLancamento = release_date.split('-')[0]

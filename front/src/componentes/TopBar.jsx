@@ -33,7 +33,7 @@ export default function TopBar() {
         <div className='logado'>
           <span className='username'>Olá, {user}!</span>
           <Link to='/perfil' className='perfil'>Meu Perfil</Link>
-          <Link to='/' className='menu'>Menu</Link>
+          <Link to='/' className='menu'>Buscar</Link>
           <button onClick={handleLogout} className='logout'><Link to='/'>Sair</Link></button>
         </div>
       )}

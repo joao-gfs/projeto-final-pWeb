@@ -1,21 +1,26 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import TopBar from '../TopBar';
-import Footer from '../Footer';
-import '../../styles/TelaPerfil.css'
-import CardFilme from '../CardFilme';
+import TopBar from './TopBar';
+import Footer from './Footer';
+import '../styles/TelaPerfil.css'
 
 export default function TelaPerfil() {
-  
-    const [user, setUser] = useState(null);
+
+    const [authorized, setAuthorized] = useState(false);
 
     useEffect(() => {
-        const storedUser = sessionStorage.getItem('username');
-        if (storedUser) {
-          setUser(storedUser);
-        }
-      }, []);
+      const tokenAuth = sessionStorage.getItem('token');
+      if(tokenAuth != null){
+        setAuthorized(true)
+      }
+    })
+
+    if(!authorized){
+      return(
+        <p id='pForbidden'>Você precisar entrar para acessar esta página. <Link id='redirect-entrar' to='/entrar'>Entrar</Link></p>
+      )
+    }
 
     return (
     <>

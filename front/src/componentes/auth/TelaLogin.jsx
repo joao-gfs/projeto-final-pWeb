@@ -69,7 +69,7 @@ export default function TelaLogin() {
       {gerarMensagem()}
       {msg}
 
-      <p>Não possui conta? Clique em <Link to="/cadastrar">Cadastrar</Link></p>
+      <p>Não possui conta? <Link to="/cadastrar">Cadastrar</Link></p>
     </section>
       
       <div className='footer-default'>

@@ -9,6 +9,21 @@ import '../styles/Listafilmes.css';
 
 export default function TelaAssistidos() {
   
+    const [authorized, setAuthorized] = useState(false);
+
+    useEffect(() => {
+      const tokenAuth = sessionStorage.getItem('token');
+      if(tokenAuth != null){
+        setAuthorized(true)
+      }
+    })
+
+    if(!authorized){
+      return(
+        <p id='pForbidden'>Você precisar entrar para acessar esta página. <Link id='redirect-entrar' to='/entrar'>Entrar</Link></p>
+      )
+    }
+
     const [watched, setWatched] = useState([]);
 
     useEffect(() => {
