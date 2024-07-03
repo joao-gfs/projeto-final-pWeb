@@ -18,7 +18,7 @@ export default function Avaliacao() {
 
   if(!authorized){
     return(
-      <p id='pForbidden'>Você precisar entrar para acessar esta página. <Link id='redirect-entrar' to='/entrar'>Entrar</Link></p>
+      <p id='pForbidden'>Você precisa entrar para acessar esta página. <Link id='redirect-entrar' to='/entrar'>Entrar</Link></p>
     )
   }
 
