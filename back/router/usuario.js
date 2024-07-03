@@ -63,25 +63,35 @@ router.post('/assistir', autenticarToken, (req, res) => {
     res.status(200).json({ message: 'Filme adicionado à lista de "a assistir"' });
 });
 
-// remover filme dos "a assistir"
-router.delete('/assistir/:id', autenticarToken, (req, res) => {
-    const filmeID = req.params.id;
+// Remover filme das listas "assistir" e "assistidos"
+router.delete('/filme/:id', autenticarToken, (req, res) => {
     const usuarioID = req.user.id;
+    const filmeID = req.params.id
 
-    const usuarioBD = getUsuario(usuarioID)
+    const usuarioBD = getUsuario(usuarioID);
 
-    const acharIndex = (f) => {
-        return f.id == filmeID
+    if (!usuarioBD) {
+        console.log('Usuário não encontrado');
+        return res.status(404).json({ message: 'Usuário não encontrado' });
     }
 
-    const index = usuarioBD.assistir.findIndex(acharIndex);
+    // Remover da lista "assistir"
+    const indexAssistir = usuarioBD.assistir.findIndex(f => f.id == filmeID);
+    if (indexAssistir !== -1) {
+        usuarioBD.assistir.splice(indexAssistir, 1);
+    }
 
-    usuarioBD.assistir.splice(index, 1);        
+    // Remover da lista "assistidos"
+    const indexAssistidos = usuarioBD.assistidos.findIndex(f => f.id == filmeID);
+    if (indexAssistidos !== -1) {
+        usuarioBD.assistidos.splice(indexAssistidos, 1);
+    }
 
+    // Se o filme foi removido de qualquer lista, salvar as mudanças
     fs.writeFileSync(bdPath, JSON.stringify(usuarios, null, 2));
-
-    res.status(200).json({ message: 'Filme removido com sucesso' });
+    res.status(200).json({ message: 'Filme removido com sucesso das listas' });
 });
+
 
 // devolve a lista completa de filmes assistidos
 router.get('/assistidos', autenticarToken, (req, res) => {
@@ -122,27 +132,26 @@ router.post('/assistidos', autenticarToken, (req, res) => {
 
 // editar avaliacao de um filme assistido
 router.put('/assistido/:id', autenticarToken, (req, res) => {
+    const { id, poster_path, release_date, title, overview, nota, resenha } = req.body;
+    const usuarioId = req.user.id;
 
-});
-
-// remover file dos "assistidos"
-router.delete('/assistido/:id', autenticarToken, (req, res) => {
-    const filmeID = req.params.id;
-    const usuarioID = req.user.id;
-
+    // Encontrar o usuário no banco de dados
     const usuarioBD = getUsuario(usuarioId);
 
-    const acharIndex = (f) => {
-        return f.id == filmeID
+    if (!usuarioBD) {
+    return res.status(404).json({ message: 'Usuário não encontrado' });
     }
 
-    const index = usuarioBD.assistidos.findIndex(acharIndex);
+    // Encontrar o filme na lista de assistidos
+    const indexFilmeAssistido = usuarioBD.assistidos.findIndex(filme => filme.id === id);
 
-    usuarioBD.assistidos.splice(index, 1);        
+    // Atualizar os detalhes do filme na lista de assistidos
+    usuarioBD.assistidos[indexFilmeAssistido] = { id, poster_path, release_date, title, overview, nota, resenha };
 
+    // Salvar os usuários de volta no banco de dados
     fs.writeFileSync(bdPath, JSON.stringify(usuarios, null, 2));
 
-    res.status(200).json({ message: 'Filme removido com sucesso' });
+    res.status(200).json({ message: 'Filme atualizado na lista de assistidos' });
 });
 
 function autenticarToken(req, res, next){
