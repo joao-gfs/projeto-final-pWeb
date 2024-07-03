@@ -6,13 +6,6 @@
     "senha": "$2b$10$mt677BBdwr.r.ADyPxM8qu9bDPd0..QjIlhyXG4OaVAHWKqfyVSpK",
     "assistir": [
       {
-        "id": 4233,
-        "poster_path": "/zqDrfOJ0ChhYFyv3iQyTgNZGs2B.jpg",
-        "release_date": "1997-12-12",
-        "title": "Pânico 2",
-        "overview": "Dois anos após o massacre em Woodsboro, Sidney Prescott e Randy Meeks estão tentando refazer suas vidas em uma nova cidade. Estudando no colégio de Windsor, eles vão lidar com uma nova onda de assassinatos quando o terrível psicopata retorna para assombrá-los nas vésperas do lançamento do filme baseado nos seus crimes."
-      },
-      {
         "id": 1022789,
         "poster_path": "/9h2KgGXSmWigNTn3kQdEFFngj9i.jpg",
         "release_date": "2024-06-11",
@@ -28,7 +21,7 @@
         "title": "Os Oito Odiados",
         "overview": "Durante uma nevasca, um carrasco, uma prisioneira, um caçador de recompensas e um homem que alega ser xerife buscam abrigo no Armazém da Minnie, onde quatro outros desconhecidos estão abrigados. Aos poucos, os oito viajantes no local começam a descobrir os segredos sangrentos uns dos outros, levando a um inevitável confronto entre eles.",
         "nota": "5",
-        "resenha": "Ótimo filme, com suspense e ótimos diálogos.\nAção bem feita e o final sangrento típico do Tarantino."
+        "resenha": "Ótimo filme, com suspense e ótimos diálogos.\nAção bem feita e o final sangrento típico do Tarantino.\nMuito legal um bang bang na neve."
       },
       {
         "id": 24,
@@ -47,6 +40,15 @@
         "overview": "Um motorista habilidoso é dublê em Hollywood e piloto de fuga em assaltos. Quando aceita ajudar o marido de sua vizinha Irene, fica na mira dos homens mais perigosos de LA. Mas o trabalho dá errado, e a única forma de garantir a segurança de Irene e do filho é fazer o que ele faz de melhor: dirigir.",
         "nota": "3",
         "resenha": "Eu draivo"
+      },
+      {
+        "id": 4233,
+        "poster_path": "/zqDrfOJ0ChhYFyv3iQyTgNZGs2B.jpg",
+        "release_date": "1997-12-12",
+        "title": "Pânico 2",
+        "overview": "Dois anos após o massacre em Woodsboro, Sidney Prescott e Randy Meeks estão tentando refazer suas vidas em uma nova cidade. Estudando no colégio de Windsor, eles vão lidar com uma nova onda de assassinatos quando o terrível psicopata retorna para assombrá-los nas vésperas do lançamento do filme baseado nos seus crimes.",
+        "nota": "2",
+        "resenha": "Nao vi entao é ruim"
       }
     ]
   },

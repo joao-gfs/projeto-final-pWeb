@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom'
 import '../styles/CardFilme.css';
 
-export default function CardFilme({ poster_path, release_date, title, overview, id , botoes=['assistir', 'assistido'], resenha=''}) {
+export default function CardFilme({ poster_path, release_date, title, overview, id , botoes=['assistir', 'assistido'], resenha='', nota=0} ) {
 
   const navigate = useNavigate();
 
@@ -40,7 +40,7 @@ export default function CardFilme({ poster_path, release_date, title, overview, 
   };
 
   const editarAvaliacao = () => {
-    navigate('/editaAvaliar', {state: { poster_path, release_date, title, overview, id }});
+    navigate('/editaAvaliar', {state: { poster_path, release_date, title, overview, id, resenha, nota }});
   }
 
   const handleDelete = async () => {
@@ -51,6 +51,17 @@ export default function CardFilme({ poster_path, release_date, title, overview, 
     } catch (error) {
       alert('Erro ao remover filme da lista!');
     } 
+  }
+
+  let divNota = null
+  if(nota != 0){
+    if(nota >= 4){
+      divNota = <div className='notas' id='notaAlta'>{nota}</div>
+    } else if(nota >= 3) {
+      divNota = <div className='notas' id='notaMedia'>{nota}</div>
+    } else {
+      divNota = <div className='notas' id='notaBaixa'>{nota}</div>
+    }
   }
 
   let buttons = []
@@ -79,6 +90,7 @@ export default function CardFilme({ poster_path, release_date, title, overview, 
         <div id='card-body'>
             <div id='card-head'>
                 <h2>{title}</h2>
+                {divNota}
                 <div id='buttons'>
                     {buttons}
                 </div>

@@ -89,7 +89,7 @@ export default function TelaCadastro() {
 
         {msg}
 
-        <p>Já possui uma conta? Clique em <Link to="/entrar">Entrar</Link></p>
+        <p>Já possui uma conta? <Link to="/entrar">Entrar</Link></p>
 
         
         <div className='footer-default'>

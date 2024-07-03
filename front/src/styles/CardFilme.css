@@ -27,9 +27,12 @@ img{
 }
 
 #card-head{
+    width: 100%;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding-top: 30px;
+    padding-bottom: 20px;
 }
 
 #btn-remover {
@@ -43,4 +46,28 @@ img{
 #btn-assistido{
     background-color: rgb(255, 187, 0);
     color: black;
+}
+
+.notas {
+    border-radius: 25px;
+    height: 30px;
+    width: 30px;
+    text-align: center;
+    line-height: 30px;
+    font-weight: bold;
+}
+
+#notaAlta{
+    background-color: rgb(21, 197, 15);
+    color: white;
+}
+
+#notaMedia{
+    background-color: rgb(255, 187, 0);
+    color: black;
+}
+
+#notaBaixa{
+    background-color: rgb(228, 78, 9);
+    color: white;
 }
