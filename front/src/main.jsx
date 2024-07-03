@@ -10,6 +10,7 @@ import TelaPerfil from './componentes/auth/TelaPerfil.jsx'
 import TelaAssistidos from './componentes/TelaAssistidos.jsx'
 import TelaAssistir from './componentes/TelaAssistir.jsx'
 import Avaliacao from './componentes/Avaliacao.jsx'
+import AvaliacaoEdit from './componentes/AvaliacaoEdit.jsx'
 
 const routes = createBrowserRouter([
   {
@@ -31,6 +32,10 @@ const routes = createBrowserRouter([
   {
     path: '/avaliar',
     element: <Avaliacao />
+  },
+  {
+    path: '/editaAvaliar',
+    element: <AvaliacaoEdit />
   },
   {
     path: '/filmes-assistidos',

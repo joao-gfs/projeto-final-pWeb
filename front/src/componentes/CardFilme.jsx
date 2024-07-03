@@ -40,13 +40,14 @@ export default function CardFilme({ poster_path, release_date, title, overview, 
   };
 
   const editarAvaliacao = () => {
-    navigate('/avaliar', {state: { poster_path, release_date, title, overview, id }});
+    navigate('/editaAvaliar', {state: { poster_path, release_date, title, overview, id }});
   }
 
   const handleDelete = async () => {
     try{
-      const response = await axios.delete('http//localhost:3000/usuario/filme', {id}, config);
-    alert('Filme removido com sucesso!');
+      const response = await axios.delete(`http://localhost:3000/usuario/filme/${id}`, config);
+      alert('Filme removido com sucesso!');
+      window.location.reload();
     } catch (error) {
       alert('Erro ao remover filme da lista!');
     } 
