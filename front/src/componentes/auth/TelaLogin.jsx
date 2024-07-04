@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import axios from 'axios';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -10,11 +10,14 @@ import '../../styles/TelaLogin.css';
 
 //validação
 const schema = yup.object().shape({
-  username: yup.string().required('Erro: Necessário preencher o campo usuário!'),
-  senha: yup.string().required('Erro: Necessário preencher o campo senha!')
+  username: yup.string().required('Necessário preencher o campo usuário!'),
+  senha: yup.string().required('Necessário preencher o campo senha!')
 });
 
 export default function TelaLogin() {
+
+  const navigate = useNavigate();
+  
   const [msg, setMsg] = useState('');
   const { register, handleSubmit, formState: { errors } } = useForm({ resolver: yupResolver(schema) });
 
@@ -40,9 +43,13 @@ export default function TelaLogin() {
     const msgValidacao = primeiraMsg ? errors[primeiraMsg].message : null;//se existe erro pega a mensagem
     return msgValidacao && (
       <div className='msg-validacao'>
-        <p>{msgValidacao}</p>
+        <p id='erro-validacao'>{msgValidacao}</p>
       </div>
     );
+  };
+
+  const handleVoltar = () => {
+    navigate('/');
   };
 
   return (
@@ -62,12 +69,13 @@ export default function TelaLogin() {
           </div>
 
           <button>Entrar</button>
-          <button><Link to='/'>Voltar</Link></button>
+          <button onClick={handleVoltar}>Voltar</button>
 
         </form>
 
       {gerarMensagem()}
-      {msg}
+
+      <p id='erro-validacao'>{msg}</p>
 
       <p>Não possui conta? <Link to="/cadastrar">Cadastrar</Link></p>
     </section>
