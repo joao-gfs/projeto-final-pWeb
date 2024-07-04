@@ -10,21 +10,14 @@ import '../styles/Listafilmes.css';
 export default function TelaAssistidos() {
   
     const [authorized, setAuthorized] = useState(false);
+    const [watched, setWatched] = useState([]);
 
     useEffect(() => {
       const tokenAuth = sessionStorage.getItem('token');
       if(tokenAuth != null){
         setAuthorized(true)
       }
-    })
-
-    if(!authorized){
-      return(
-        <p id='pForbidden'>Você precisa entrar para acessar esta página. <Link id='redirect-entrar' to='/entrar'>Entrar</Link></p>
-      )
-    }
-
-    const [watched, setWatched] = useState([]);
+    }, []);
 
     useEffect(() => {
         const fetchWatchedMovies = async () => {
@@ -42,6 +35,12 @@ export default function TelaAssistidos() {
 
         fetchWatchedMovies();
     }, []);
+
+    if(!authorized){
+      return(
+        <p id='pForbidden'>Você precisa entrar para acessar esta página. <Link id='redirect-entrar' to='/entrar'>Entrar</Link></p>
+      )
+    };
 
     return (
     <>

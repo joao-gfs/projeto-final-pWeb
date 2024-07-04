@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import TopBar from './TopBar'
 import Footer from './Footer'
 import axios from 'axios'
 import '../styles/Avaliacao.css'
-import { Navigate, useLocation } from 'react-router-dom'
+import { Navigate, useLocation, Link } from 'react-router-dom'
 
 export default function Avaliacao() {
 
@@ -14,13 +14,7 @@ export default function Avaliacao() {
       if(tokenAuth != null){
         setAuthorized(true)
       }
-    })
-
-    if(!authorized){
-      return(
-        <p id='pForbidden'>Você precisa entrar para acessar esta página. <Link id='redirect-entrar' to='/entrar'>Entrar</Link></p>
-      )
-    }
+    }, [])
 
     const {poster_path, release_date, title, overview, id} = useLocation().state;
 
@@ -76,6 +70,12 @@ export default function Avaliacao() {
       } catch(error) {
 
       }
+    }
+
+    if(!authorized){
+      return(
+        <p id='pForbidden'>Você precisa entrar para acessar esta página. <Link id='redirect-entrar' to='/entrar'>Entrar</Link></p>
+      )
     }
 
     if(msg === 'OK'){

@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import TopBar from './TopBar'
 import Footer from './Footer'
 import axios from 'axios'
 import '../styles/Avaliacao.css'
-import { Navigate, useLocation } from 'react-router-dom'
+import { Navigate, useLocation, Link } from 'react-router-dom'
 
 export default function Avaliacao() {
 
@@ -14,13 +14,7 @@ export default function Avaliacao() {
     if(tokenAuth != null){
       setAuthorized(true)
     }
-  })
-
-  if(!authorized){
-    return(
-      <p id='pForbidden'>Você precisa entrar para acessar esta página. <Link id='redirect-entrar' to='/entrar'>Entrar</Link></p>
-    )
-  }
+  }, []);
 
     const {poster_path, release_date, title, overview, id, resenha, nota} = useLocation().state;
 
@@ -76,10 +70,6 @@ export default function Avaliacao() {
       }
     }
 
-    if(msg === 'OK'){
-      return <Navigate to='/perfil' />
-    }
-
     let divNota = null
   if(nota != 0){
     if(nota >= 4){
@@ -89,6 +79,16 @@ export default function Avaliacao() {
     } else {
       divNota = <div className='notas' id='notaBaixa'>{nota}</div>
     }
+  }
+
+  if(!authorized){
+    return(
+      <p id='pForbidden'>Você precisa entrar para acessar esta página. <Link id='redirect-entrar' to='/entrar'>Entrar</Link></p>
+    )
+  }
+
+  if(msg === 'OK'){
+    return <Navigate to='/perfil' />
   }
 
   return (

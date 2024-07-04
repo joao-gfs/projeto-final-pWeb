@@ -16,13 +16,7 @@ export default function TelaAssistir() {
       if(tokenAuth != null){
         setAuthorized(true)
       }
-    })
-
-    if(!authorized){
-      return(
-        <p id='pForbidden'>Você precisa entrar para acessar esta página. <Link id='redirect-entrar' to='/entrar'>Entrar</Link></p>
-      )
-    }
+    }, []);
 
     const [watch, setWatchList] = useState([]);
 
@@ -42,6 +36,12 @@ export default function TelaAssistir() {
 
         fetchWatchMovies();
     }, []);
+
+    if(!authorized){
+      return(
+        <p id='pForbidden'>Você precisa entrar para acessar esta página. <Link id='redirect-entrar' to='/entrar'>Entrar</Link></p>
+      )
+    }
 
     return (
     <>

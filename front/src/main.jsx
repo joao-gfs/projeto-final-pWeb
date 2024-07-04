@@ -34,7 +34,7 @@ const routes = createBrowserRouter([
     element: <Avaliacao />
   },
   {
-    path: '/editaAvaliar',
+    path: '/avaliar/editar',
     element: <AvaliacaoEdit />
   },
   {
