@@ -1,25 +1,27 @@
 import React from 'react';
-import axios, { formToJSON } from "axios";//npm install
+import axios from "axios";//npm install
 import { useState } from "react";
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useForm, useFormState } from 'react-hook-form';
-import { Form, Link, Navigate } from "react-router-dom";
+import { useForm } from 'react-hook-form';
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import '../../styles/TelaCadastro.css'
 import TopBar from '../TopBar';
 import Footer from '../Footer';
 
 //validação
 const schema = yup.object().shape({
-    username: yup.string().required('Erro: Necessário preencher o campo usuário!'),
-    senha: yup.string().required('Erro: Necessário preencher o campo senha!')
+    username: yup.string().required('Necessário preencher o campo usuário!'),
+    senha: yup.string().required('Necessário preencher o campo senha!')
         .min(4, 'A senha deve ter no mínimo 4 caracteres!'),
     confsenha: yup.string().oneOf([yup.ref('senha'), null], 'As senhas não conferem!')
-        .required('Erro: Necessário preencher o campo senha!'),
-    email: yup.string().email('Erro: Necessário preencher o campo email!')
+        .required('Necessário preencher o campo senha!'),
+    email: yup.string().email('Insira um e-mail válido!').required('Necessário preencher o campo email!')
 })
 
 export default function TelaCadastro() {
+
+    const navigate = useNavigate();
     
     const [userCriado, setUserCriado] = useState(false);
     const [msg, setMsg] = useState();
@@ -41,13 +43,17 @@ export default function TelaCadastro() {
 
     //gerar mensagens de validação
     const gerarMensagem = () => {
-    const primeiraMsg = Object.keys(errors)[0];//pega primeira chave de erro 
-    const msgValidacao = primeiraMsg ? errors[primeiraMsg].message : null;//se existe erro pega a mensagem
-    return msgValidacao && (
-      <div className='msg-validacao'>
-        <p>{msgValidacao}</p>
-      </div>
+        const primeiraMsg = Object.keys(errors)[0];//pega primeira chave de erro 
+        const msgValidacao = primeiraMsg ? errors[primeiraMsg].message : null;//se existe erro pega a mensagem
+        return msgValidacao && (
+        <div className='msg-validacao'>
+            <p id='erro-validacao'>{msgValidacao}</p>
+        </div>
     );
+  };
+
+  const handleVoltar = () => {
+    navigate('/');
   };
   
   if(msg === 'Usuário cadastrado com sucesso.') {
@@ -80,14 +86,14 @@ export default function TelaCadastro() {
 
             <div>
                 <button type='submit'>Enviar</button>
-                <button className='btnvoltar'><Link to='/'>Voltar</Link></button>
+                <button className='btnvoltar' onClick={handleVoltar}>Voltar</button>
             </div>
             
         </form>
 
         {gerarMensagem()}
 
-        {msg}
+        <p id='erro-validacao'>{msg}</p>
 
         <p>Já possui uma conta? <Link to="/entrar">Entrar</Link></p>
 
