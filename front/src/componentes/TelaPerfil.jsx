@@ -8,13 +8,13 @@ import '../styles/TelaPerfil.css'
 export default function TelaPerfil() {
 
     const [authorized, setAuthorized] = useState(false);
-
+    
     useEffect(() => {
       const tokenAuth = sessionStorage.getItem('token');
       if(tokenAuth != null){
         setAuthorized(true)
       }
-    })
+    }, []);
 
     if(!authorized){
       return(

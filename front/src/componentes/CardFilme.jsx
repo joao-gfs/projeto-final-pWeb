@@ -40,7 +40,7 @@ export default function CardFilme({ poster_path, release_date, title, overview, 
   };
 
   const editarAvaliacao = () => {
-    navigate('/editaAvaliar', {state: { poster_path, release_date, title, overview, id, resenha, nota }});
+    navigate('/avaliar/editar', {state: { poster_path, release_date, title, overview, id, resenha, nota }});
   }
 
   const handleDelete = async () => {

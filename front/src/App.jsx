@@ -36,9 +36,7 @@ function App() {
               {filmes.map(filme => <CardFilme key={filme.id} {...filme}/>)}
             </div>
         </section>
-        <div className='footer-default'>
-            <Footer/>
-        </div>
+        <Footer/>
       </div>
     </>
   );
