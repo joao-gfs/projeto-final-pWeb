@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Form, Link, Navigate } from "react-router-dom";
+import { Form, Link, Navigate, useLocation } from "react-router-dom";
 import '../styles/TopBar.css';
 
 export default function TopBar() {
   const [user, setUser] = useState(null);
+  const location = useLocation();//localiza o url atual
 
   useEffect(() => {
     const storedUser = sessionStorage.getItem('username');
@@ -32,8 +33,10 @@ export default function TopBar() {
       {user && (
         <div className='logado'>
           <span className='username'>Olá, {user}!</span>
-          <Link to='/perfil' className='perfil'>Meu Perfil</Link>
-          <Link to='/' className='menu'>Buscar</Link>
+          {location.pathname !== '/perfil' && (
+          <Link to='/perfil' className='perfil'>Meu Perfil</Link>)}
+          {location.pathname !== '/' && (
+            <Link to='/' className='menu'>Buscar</Link>)}
           <button onClick={handleLogout} className='logout'><Link to='/'>Sair</Link></button>
         </div>
       )}
