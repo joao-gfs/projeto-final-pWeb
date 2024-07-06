@@ -79,8 +79,40 @@
     "username": "pvrodrigues10",
     "email": "paulovitor-cr@hotmail.com",
     "senha": "$2b$10$X9wvyjywCFeGODQruJFmBeodIRuo9eMk3rJxFUbIbLq8/fff2Vb2K",
-    "assistir": [],
-    "assistidos": []
+    "assistir": [
+      {
+        "id": 181808,
+        "poster_path": "/5dGufuaIG5vNcxPm8QPij5MSPeQ.jpg",
+        "release_date": "2017-12-13",
+        "title": "Star Wars: Episódio VIII - Os Últimos Jedi",
+        "overview": "A tranquila e solitária vida de Luke Skywalker sofre uma reviravolta quando ele conhece Rey, uma jovem que mostra fortes sinais da Força. O desejo dela de aprender o estilo dos Jedi força Luke a tomar uma decisão que mudará sua vida para sempre. Enquanto isso, Kylo Ren e o General Hux lideram a Primeira Ordem para um ataque total contra Leia e a Resistência pela supremacia da galáxia."
+      },
+      {
+        "id": 181812,
+        "poster_path": "/uLlrDUtFG2tKtDcJN6kBznlqqsp.jpg",
+        "release_date": "2019-12-18",
+        "title": "Star Wars: Episódio IX - A Ascensão Skywalker",
+        "overview": "Com o retorno do Imperador Palpatine, todos voltam a temer seu poder e, com isso, a Resistência toma a frente da batalha que ditará os rumos da galáxia. Treinando para ser uma completa Jedi, Rey (Daisy Ridley) ainda se encontra em conflito com seu passado e futuro, mas teme pelas respostas que pode conseguir a partir de sua complexa ligação com Kylo Ren (Adam Driver), que também se encontra em conflito pela Força."
+      },
+      {
+        "id": 140607,
+        "poster_path": "/lqMDbo4rXnakFgc4C6LzPv6pG7F.jpg",
+        "release_date": "2015-12-15",
+        "title": "Star Wars: O Despertar da Força",
+        "overview": "A queda de Darth Vader e do Império levou ao surgimento de uma nova força sombria: a Primeira Ordem. Eles procuram o jedi Luke Skywalker, desaparecido. A resistência tenta desesperadamente encontrá-lo antes para salvar a galáxia."
+      }
+    ],
+    "assistidos": [
+      {
+        "id": 348350,
+        "poster_path": "/jAMEX0syUh6sbjBiysibzrFpbo.jpg",
+        "release_date": "2018-05-15",
+        "title": "Han Solo: Uma História Star Wars",
+        "overview": "Embarque na Millennium Falcon e viaje para uma galáxia distante em uma nova aventura com o mais amado canalha da galáxia. Através de uma série de ousadas aventuras no obscuro e perigoso submundo do crime, Han Solo encontra seu poderoso futuro copiloto Chewbacca e encontra o famoso jogador Lando Calrissian, em uma jornada que definirá o curso de um dos heróis mais improváveis da saga Star Wars.",
+        "nota": "5",
+        "resenha": "muito bom"
+      }
+    ]
   },
   {
     "id": 6,

@@ -21,6 +21,7 @@ button {
     margin-right: 10px;
     border-radius: 2em;
     background-color: white;
+    color: black;
 }
 
 button a{
