@@ -45,7 +45,7 @@ export default function TelaAssistidos() {
     return (
     <>
     <TopBar/>
-    <h1>Filmes Assistidos</h1>
+    <h1>Filmes Assistidos:</h1>
     <section>
         <ul>
             {watched.map(filme => <li>

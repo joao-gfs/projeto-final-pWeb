@@ -1,18 +1,36 @@
 .filmes {
     display: flex;
-    justify-content: space-around;
-    align-items: flex-start;
     margin-top: 20px;
     padding: 20px;
+    font-size: 20px;
+    margin: 0 auto;
 }
 
-.filmes > div {
+.filmes div {
     width: 45%;
+}
+
+.assistidos, .assistir{
+    background-color: black;
+    width: 100px;
+    height: 90px;
+    border-radius: 2em;
+    padding-top: 15px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid white;
 }
 
 h1 {
     text-align: center;
     margin-top: 20px;
+    padding-bottom: 25px;
+}
+
+.titulo {
+    padding-bottom: 25px;
 }
 
 .filmes a{
@@ -21,4 +39,5 @@ h1 {
 
 .filmes a:hover{
     color: white;
+    text-decoration: none;
 }
