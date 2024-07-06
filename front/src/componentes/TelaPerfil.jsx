@@ -8,13 +8,13 @@ import '../styles/TelaPerfil.css'
 export default function TelaPerfil() {
 
     const [authorized, setAuthorized] = useState(false);
-    
+
     useEffect(() => {
       const tokenAuth = sessionStorage.getItem('token');
       if(tokenAuth != null){
         setAuthorized(true)
       }
-    }, []);
+    })
 
     if(!authorized){
       return(
@@ -25,7 +25,9 @@ export default function TelaPerfil() {
     return (
     <>
         <TopBar/>
-        <h1>Ver lista de Filmes</h1>
+        <section className='titulo'>
+          <h1>Lista de Filmes:</h1>
+        </section>
         <section className='filmes'>
             <div className='assistidos'>
                 <h2><Link to='/filmes-assistidos'>Meus Filmes assistidos</Link></h2>
@@ -33,7 +35,6 @@ export default function TelaPerfil() {
             <div className='assistir'>
             <h2><Link to='/filmes-assistir'>Meus Filmes para assistir</Link></h2>
             </div>
-
         </section>
 
         <div className='footer-default'>
