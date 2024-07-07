@@ -46,7 +46,7 @@ export default function TelaAssistir() {
     return (
     <>
     <TopBar/>
-    <h1>Filmes a Assistir:</h1>
+    <h1>Filmes a Assistir</h1>
     <section>
         <ul>
             {watch.map(filme => <li>

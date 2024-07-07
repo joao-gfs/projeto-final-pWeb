@@ -1,36 +1,29 @@
 .filmes {
     display: flex;
     margin-top: 20px;
-    padding: 20px;
     font-size: 20px;
     margin: 0 auto;
 }
 
-.filmes div {
-    width: 45%;
-}
-
 .assistidos, .assistir{
     background-color: black;
-    width: 100px;
-    height: 90px;
+    width: 300px;
+    height: 180px;
     border-radius: 2em;
-    padding-top: 15px;
     margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: center;
     border: 2px solid white;
+    font-size: 25px;
 }
 
 h1 {
     text-align: center;
-    margin-top: 20px;
-    padding-bottom: 25px;
 }
 
 .titulo {
-    padding-bottom: 25px;
+    padding-bottom: 70px;
 }
 
 .filmes a{

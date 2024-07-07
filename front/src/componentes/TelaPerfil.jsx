@@ -26,7 +26,7 @@ export default function TelaPerfil() {
     <>
         <TopBar/>
         <section className='titulo'>
-          <h1>Lista de Filmes:</h1>
+          <h1>Lista de Filmes</h1>
         </section>
         <section className='filmes'>
             <div className='assistidos'>
