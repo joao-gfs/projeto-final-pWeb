@@ -12,11 +12,11 @@ import Footer from '../Footer';
 //validação
 const schema = yup.object().shape({
     username: yup.string().required('Necessário preencher o campo usuário!'),
+    email: yup.string().email('Insira um e-mail válido!').required('Necessário preencher o campo email!'),
     senha: yup.string().required('Necessário preencher o campo senha!')
         .min(4, 'A senha deve ter no mínimo 4 caracteres!'),
     confsenha: yup.string().oneOf([yup.ref('senha'), null], 'As senhas não conferem!')
-        .required('Necessário preencher o campo senha!'),
-    email: yup.string().email('Insira um e-mail válido!').required('Necessário preencher o campo email!')
+        .required('Necessário preencher o campo senha!')
 })
 
 export default function TelaCadastro() {
