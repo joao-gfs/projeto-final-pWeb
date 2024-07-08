@@ -24,7 +24,7 @@ function App() {
         <TopBar/>
         <section>
           <header>
-            <h1>Letter Box</h1>
+            <h1>MovieShelf</h1>
             <input
               type="text"
               value={titulo}
