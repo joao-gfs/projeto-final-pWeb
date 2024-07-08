@@ -1,8 +1,10 @@
-# Site de Avaliação de Filmes 
+# MovieShelf - Site de Avaliação de Filmes 
 
 ## Introdução
 
-Durante a rotina é comum ouvir falar de filmes, seja em conversas ou nas redes sociais, se interessar e depois se esquecer dele. Pior ainda, é sentar na frente da TV ou computador e sentir que nada agrada. Tendo isso em vista, foi criado o projeto _**NomeAqui**_, um site de avaliações de filmes, no qual os usuários podem dar notas e fazer uma resenha sobre filmes assistidos, além de registrar em uma lista os filmes que deseja assistir.
+Durante a rotina é comum ouvir falar de filmes, seja em conversas ou nas redes sociais, se interessar e depois se esquecer dele. Pior ainda, é sentar na frente da TV ou computador e sentir que nada agrada. 
+
+Pensando nisso, foi criado o projeto **MovieShelf**, um site de avaliações de filmes, no qual os usuários podem dar notas e fazer uma resenha sobre filmes assistidos, além de registrar em uma lista os filmes que deseja assistir.
 
 ## Projeto Final - Programação Web
 
@@ -49,6 +51,12 @@ Note que como os dois servidores continuam como um processo contínuo no termina
 
 - Estilização: `CSS3 (puro)`
 
+## Comunicação HTTP
+
+A comunicação entre Front e Backend é feita através de comunicação `HTTP`, usando a biblioteca **Axios** para fazer as requisições.
+
+Além disso, a Axios é usada para fazer as requisições `HTTP` à API usada para fornecer os dados dos filmes.
+
 ## Rotas Backend
 
 As rotas backend foram organizadaz em três separações principais: 
@@ -78,7 +86,7 @@ Rotas `/usuario` são todas rotas privadas e aceitam requisições de mais de um
 
 - `/filme`: recebe apenas requisições `DELETE` e recebe um parâmetro `/:id`. Através dele, o filme referente é apagado das listas `assistir` ou `assistidos`
 
-Rota `/filmes/buscar/:titulo` é a rota que retorna os filmes buscados. Esta rota usa o `titulo` para fazer uma requisição à `API` do **The Movie Database**,  que  foi a escolhida para fornecer os dados da aplicação.
+Rota `/filmes/buscar/:titulo` é a rota que retorna os filmes buscados. Esta rota usa o `titulo` para fazer uma requisição à API do **The Movie Database**,  que  foi a escolhida para fornecer os dados da aplicação.
 
 ## API The Movie Database
 
